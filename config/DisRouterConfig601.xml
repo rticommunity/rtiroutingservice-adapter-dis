@@ -1,0 +1,3299 @@
+<?xml version="1.0"?>
+<!--
+ (c) 2022 Copyright, Real-Time Innovations, Inc. (RTI) All rights reserved.
+
+  RTI grants Licensee a license to use, modify, compile, and create derivative
+  works of the Software solely in combination with RTI Connext DDS. Licensee
+  may redistribute copies of the Software provided that all such copies are
+  subject to this License. The Software is provided "as is", with no warranty
+  of any type, including any warranty for fitness for any purpose. RTI is
+  under no obligation to maintain or support the Software. RTI shall not be
+  liable for any incidental or consequential damages arising out of the use or
+  inability to use the Software. For purposes of clarity, nothing in this
+  License prevents Licensee from using alternate versions of DDS, provided
+  that Licensee may not combine or link such alternate versions of DDS with
+  the Software.
+-->
+
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="https://community.rti.com/schema/6.0.1/rti_routing_service.xsd">
+
+    <!-- ****************************************************************** -->
+    <!-- RTI Routing Service                                                -->
+    <!-- ****************************************************************** -->
+    <!--                                                                    -->
+    <!-- DIS Adapter configuration                                          -->
+    <!--                                                                    -->
+    <!-- ****************************************************************** -->
+    <!--                                                                    -->
+    <!--                                                                    -->
+    <!-- To use your own hosts and ports find and change                    -->
+    <!-- the properties Host and Port                                       -->
+    <!--                                                                    -->
+    <!-- ****************************************************************** -->
+
+    <!-- Adapter plugins are declared here here -->
+
+    <adapter_library name="adapters">
+        <adapter_plugin name="DisAdapter">
+            <dll>DisAdapter</dll>
+            <create_function>DisAdapterPlugin_create</create_function>
+        </adapter_plugin>
+    </adapter_library>
+
+    <!-- ****************************************************************** -->
+    <!-- ****************************************************************** -->
+
+    <types>
+
+        <include file="./pdu/DIS_Data_Type.xml" />
+        <include file="./pdu/DIS_DDS_Constants.xml" />
+        <include file="./pdu/Common_Header.xml" />
+        <!-- Entity_State_PDU = 1 -->
+        <include file="./pdu/EntityStatePDU.xml" />
+        <!-- Fire_PDU = 2 -->
+        <include file="./pdu/FirePDU.xml" />
+        <!-- Detonation_PDU = 3 -->
+        <include file="./pdu/DetonationPDU.xml" />
+        <!-- Collision_PDU = 4 -->
+        <include file="./pdu/CollisionPDU.xml" />
+        <!-- Service_Request_PDU = 5 -->
+        <!--<include file="./pdu/Service_Request_PDU.xml"/>-->
+        <!-- Resupply_Offer_PDU  = 6 -->
+        <!--<include file="./pdu/Resupply_Offer_PDU.xml"/>-->
+        <!-- Resupply_Received_PDU = 7 -->
+        <!--<include file="./pdu/Resupply_Received_PDU.xml"/>-->
+        <!-- Resupply_Cancel_PDU = 8 -->
+        <!--<include file="./pdu/Resupply_Cancel_PDU.xml"/>-->
+        <!-- Repair_Complete_PDU = 9 -->
+        <!--<include file="./pdu/Repair_Complete_PDU.xml"/>-->
+        <!-- Repair_Response_PDU = 10 -->
+        <!--<include file="./pdu/Repair_Response_PDU.xml"/>-->
+        <!-- Create_Entity_PDU = 11 -->
+        <include file="./pdu/Create_EntityPDU.xml" />
+        <!-- Remove_Entity_PDU = 12 -->
+        <include file="./pdu/Remove_EntityPDU.xml" />
+        <!-- Start_Resume_PDU = 13 -->
+        <include file="./pdu/Start_ResumePDU.xml" />
+        <!-- Stop_Freeze_PDU = 14 -->
+        <include file="./pdu/Stop_FreezePDU.xml" />
+        <!-- Acknowledge_PDU = 15 -->
+        <include file="./pdu/AcknowledgePDU.xml" />
+        <!-- Action_Request_PDU = 16 -->
+        <include file="./pdu/Action_RequestPDU.xml" />
+        <!-- Action_Response_PDU = 17 -->
+        <include file="./pdu/Action_ResponsePDU.xml" />
+        <!-- Data_Query_PDU = 18 -->
+        <include file="./pdu/Data_QueryPDU.xml" />
+        <!-- Set_Data_PDU = 19 -->
+        <include file="./pdu/Set_DataPDU.xml" />
+        <!-- Data_PDU = 20 -->
+        <include file="./pdu/DataPDU.xml" />
+        <!-- Event_Report_PDU = 21 -->
+        <include file="./pdu/Event_ReportPDU.xml" />
+        <!-- Message_PDU = 22 -->
+        <!--<include file="./pdu/Message_PDU.xml"/>-->
+        <!-- Electromagnetic_Emission_PDU = 23 -->
+        <!-- <include file="./pdu/Electromagnetic_EmissionPDU.xml"/> -->
+        <!-- Designator_PDU = 24 -->
+        <include file="./pdu/DesignatorPDU.xml" />
+        <!-- Transmitter_PDU = 25 -->
+        <include file="./pdu/TransmitterPDU.xml" />
+        <!-- Signal_PDU = 26 -->
+        <include file="./pdu/SignalPDU.xml" />
+        <!-- Receiver_PDU = 27 -->
+        <include file="./pdu/ReceiverPDU.xml" />
+        <!-- IFF_ATC_NAVAIDS_PDU = 28 -->
+        <!--<include file="./pdu/IFF_ATC_NAVAIDS_PDU.xml"/>-->
+        <!-- UnderwaterAcoustic_PDU = 29 -->
+        <!--<include file="./pdu/UnderwaterAcoustic_PDU.xml"/>-->
+        <!-- SupplementalEmission_EntityState_PDU = 30 -->
+        <!--<include file="./pdu/SupplementalEmission_EntityState_PDU.xml"/>-->
+        <!-- IntercomSignal_PDU  = 31 -->
+        <!-- <include file="./pdu/Intercom_SignalPDU.xml"/> -->
+        <!-- IntercomControl_PDU = 32 -->
+        <include file="./pdu/Intercom_ControlPDU.xml" />
+        <!-- 33_PDU = 33 -->
+        <include file="./pdu/Aggregate_StatePDU.xml" />
+        <!-- IsGroupOf_PDU  = 34 -->
+        <include file="./pdu/IsGroupOfPDU.xml" />
+        <!-- TransferControlRequest_PDU = 35 -->
+        <include file="./pdu/Transfer_Control_RequestPDU.xml" />
+        <!-- IsPartOf_PDU = 36 -->
+        <include file="./pdu/IsPartOfPDU.xml" />
+        <!-- MinefieldState_PDU = 37 -->
+        <!--<include file="./pdu/MinefieldState_PDU.xml"/>-->
+        <!-- MinefieldQuery_PDU = 38 -->
+        <!--<include file="./pdu/MinefieldQuery_PDU.xml"/>-->
+        <!-- MinefieldData_PDU = 39 -->
+        <!--<include file="./pdu/MinefieldData_PDU.xml"/>-->
+        <!-- MinefieldResponseNAK_PDU = 40 -->
+        <!--<include file="./pdu/MinefieldResponseNAK_PDU.xml"/>-->
+        <!-- EnvironmentalProcess_PDU = 41 -->
+        <include file="./pdu/Environmental_ProcessPDU.xml" />
+        <!-- GriddedData_PDU = 42 -->
+        <include file="./pdu/Gridded_DataPDU.xml" />
+        <!-- PointObjectState_PDU = 43 -->
+        <include file="./pdu/Point_Object_StatePDU.xml" />
+        <!-- LinearObjectState_PDU = 44 -->
+        <include file="./pdu/Linear_Object_StatePDU.xml" />
+        <!-- ArealObjectState_PDU = 45 -->
+        <include file="./pdu/Areal_Object_StatePDU.xml" />
+        <!-- TSPI_PDU = 46 -->
+        <include file="./pdu/TSPI_PDU.xml" />
+        <!-- Appearance_PDU = 47 -->
+        <!--<include file="./pdu/Appearance_PDU.xml"/>-->
+        <!-- ArticulatedParts_PDU = 48 -->
+        <!-- <include file="./pdu/ArticulatedParts_PDU.xml"/>-->
+        <!-- LEFire_PDU = 49 -->
+        <include file="./pdu/LE_FirePDU.xml" />
+        <!-- LEDetonation_PDU = 50 -->
+        <include file="./pdu/LE_DetonationPDU.xml" />
+        <!-- CreateEntity_R_PDU = 51 -->
+        <include file="./pdu/Create_EntityPDU.xml" />
+        <!-- RemoveEntity_R_PDU = 52 -->
+        <include file="./pdu/Remove_EntityPDU.xml" />
+        <!-- Start_Resume_R_PDU = 53 -->
+        <include file="./pdu/Start_ResumePDU.xml" />
+        <!-- Stop_Freeze_R_PDU = 54 -->
+        <include file="./pdu/Stop_FreezePDU.xml" />
+        <!-- Acknowledge_R_PDU = 55 -->
+        <include file="./pdu/AcknowledgePDU.xml" />
+        <!-- ActionRequest_R_PDU = 56 -->
+        <include file="./pdu/Action_RequestPDU.xml" />
+        <!-- ActionResponse_R_PDU = 57 -->
+        <include file="./pdu/Action_ResponsePDU.xml" />
+        <!-- DataQuery_R_PDU = 58 -->
+        <include file="./pdu/Data_QueryPDU.xml" />
+        <!-- Set60_PDU = 59 -->
+        <include file="./pdu/Set_DataPDU.xml" />
+        <!-- 60_PDU = 60 -->
+        <include file="./pdu/DataPDU.xml" />
+        <!-- EventReport_R_PDU = 61 -->
+        <include file="./pdu/Event_ReportPDU.xml" />
+        <!-- Comment_R_PDU = 62 -->
+        <include file="./pdu/CommentPDU.xml" />
+        <!-- Record_R_PDU = 63 -->
+        <include file="./pdu/Record_R_PDU.xml" />
+        <!-- SetRecord_R_PDU = 64 -->
+        <include file="./pdu/Set_Record_R_PDU.xml" />
+        <!-- RecordQuery_R_PDU = 65 -->
+        <include file="./pdu/Record_Query_R_PDU.xml" />
+        <!-- Collision_Elastic_PDU = 66 -->
+        <include file="./pdu/Collision_ElasticPDU.xml" />
+        <!-- EntityStateUpdate_PDU = 67 -->
+        <include file="./pdu/EntityStateUpdatePDU.xml" />
+        <!-- DirectedEnergyFire_PDU = 68 -->
+        <include file="./pdu/Directed_Energy_FirePDU.xml" />
+        <!-- EntityDamageStatus_PDU = 69 -->
+        <include file="./pdu/Entity_Damage_StatusPDU.xml" />
+        <!-- IO_Action_PDU = 70 -->
+        <!--<include file="./pdu/IO_Action_PDU.xml"/>-->
+        <!-- IO_Report_PDU = 71 -->
+        <!--<include file="./pdu/IO_Report_PDU.xml"/>-->
+        <!-- Attribute_PDU = 72 -->
+        <!--<include file="./pdu/Attribute_PDU.xml"/>-->
+        <!-- Announce_Object_PDU = 129 -->
+        <!--<include file="./pdu/Announce_Object_PDU.xml"/>-->
+        <!-- Delete_Object_PDU = 130 -->
+        <!--<include file="./pdu/Delete_Object_PDU.xml"/>-->
+        <!-- Describe_Event_PDU = 132 -->
+        <!--<include file="./pdu/Describe_Event_PDU.xml"/>-->
+        <!-- Describe_Object_PDU = 133 -->
+        <!--<include file="./pdu/Describe_Object_PDU.xml"/>-->
+        <!-- Request_Event_PDU = 134 -->
+        <!--<include file="./pdu/Request_Event_PDU.xml"/>-->
+        <!-- Request_Object_PDU = 135 -->
+        <!--<include file="./pdu/Request_Object_PDU.xml"/>-->
+    </types>
+
+    <routing_service name="RoutingService">
+        <annotation>
+            <documentation>
+        Connects an UDP socket and parses the data as DIS samples publishing them to DDS
+            </documentation>
+        </annotation>
+
+        <administration>
+            <domain_id>11</domain_id>
+        </administration>
+
+        <monitoring>
+            <enabled>true</enabled>
+            <domain_id>11</domain_id>
+        </monitoring>
+
+        <domain_route name="DomainRoute">
+            <connection name="DIS_Connection" plugin_name="adapters::DisAdapter">
+
+                <!-- *******************************************************-->
+                <!--               Adapter Configuration                    -->
+                <!-- *******************************************************-->
+                <property>
+                    <value>
+                        <element>
+                            <!-- Maximum size of the messages received/sent
+                                 from the socket -->
+                            <name>message_max_size</name>
+                            <value>8192</value>
+                        </element>
+                        <element>
+                            <!-- Port used to receive data -->
+                            <name>receive_port</name>
+                            <value>3000</value>
+                        </element>
+                        <element>
+                            <!-- Host where the data will be sent -->
+                            <name>host</name>
+                            <!--<value>192.168.2.255</value>-->
+                            <value>127.0.0.1</value>
+                            <!-- broadcast -->
+                            <!-- <value>0.0.0.0</value> -->
+                            <!-- broadcast rcv -->
+                        </element>
+                        <element>
+                            <!-- Whether to enable broadcast, 0 = disabled
+                                 (defaults to enabled) -->
+                            <name>broadcast</name>
+                            <value>1</value>
+                        </element>
+
+                        <element>
+                            <!-- Port used to send data -->
+                            <name>send_port</name>
+                            <value>3000</value>
+                        </element>
+                    </value>
+                </property>
+
+                <!-- **********************************************************************************-->
+                <!--                        Entity Info PDUs                                           -->
+                <!-- **********************************************************************************-->
+                <!-- Entity_State_PDU = 1 -->
+                <registered_type name="DIS::PDU::Entity_State_PDU"
+                                 type_name="DIS::PDU::Entity_State_PDU" />
+                <!-- Fire_PDU = 2 -->
+                <registered_type name="DIS::PDU::Fire_PDU"
+                                 type_name="DIS::PDU::Fire_PDU" />
+                <!-- Detonation_PDU = 3 -->
+                <registered_type name="DIS::PDU::Detonation_PDU"
+                                 type_name="DIS::PDU::Detonation_PDU" />
+                <!-- Collision_PDU = 4 -->
+                <registered_type name="DIS::PDU::Collision_PDU"
+                                 type_name="DIS::PDU::Collision_PDU" />
+                <!-- Service_Request_PDU = 5 -->
+                <!--<registered_type name="DIS::PDU::Service_Request_PDU"
+                                     type_name="DIS::PDU::Service_Request_PDU"/>-->
+                <!-- Resupply_Offer_PDU = 6 -->
+                <!--<registered_type name="DIS::PDU::Resupply_Offer_PDU"
+                                     type_name="DIS::PDU::Resupply_Offer_PDU"/>-->
+                <!-- Resupply_Received_PDU = 7 -->
+                <!--<registered_type name="DIS::PDU::Resupply_Received_PDU"
+                                     type_name="DIS::PDU::Resupply_Received_PDU"/>-->
+                <!-- Resupply_Cancel_PDU = 8 -->
+                <!--<registered_type name="DIS::PDU::Resupply_Cancel_PDU"
+                                     type_name="DIS::PDU::Resupply_Cancel_PDU"/>-->
+                <!-- Repair_Complete_PDU  = 9 -->
+                <!--<registered_type name="DIS::PDU::Repair_Complete_PDU"
+                                     type_name="DIS::PDU::Repair_Complete_PDU"/>-->
+                <!-- Repair_Response_PDU = 10 -->
+                <!--<registered_type name="DIS::PDU::Repair_Response_PDU"
+                                     type_name="DIS::PDU::Repair_Response_PDU"/>-->
+                <!-- Create_Entity_PDU = 11 -->
+                <registered_type name="DIS::PDU::Create_Entity_PDU"
+                                 type_name="DIS::PDU::Create_Entity_PDU" />
+                <!-- Remove_Entity_PDU = 12 -->
+                <registered_type name="DIS::PDU::Remove_Entity_PDU"
+                                 type_name="DIS::PDU::Remove_Entity_PDU" />
+                <!-- Start_Resume_PDU = 13 -->
+                <registered_type name="DIS::PDU::Start_Resume_PDU"
+                                 type_name="DIS::PDU::Start_Resume_PDU" />
+                <!-- Stop_Freeze_PDU = 14 -->
+                <registered_type name="DIS::PDU::Stop_Freeze_PDU"
+                                 type_name="DIS::PDU::Stop_Freeze_PDU" />
+                <!-- Acknowledge_PDU = 15 -->
+                <registered_type name="DIS::PDU::Acknowledge_PDU"
+                                 type_name="DIS::PDU::Acknowledge_PDU" />
+                <!-- Action_Request_PDU = 16 -->
+                <registered_type name="DIS::PDU::Action_Request_PDU"
+                                 type_name="DIS::PDU::Action_Request_PDU" />
+                <!-- Action_Response_PDU = 17 -->
+                <registered_type name="DIS::PDU::Action_Response_PDU"
+                                 type_name="DIS::PDU::Action_Response_PDU" />
+                <!-- Data_Query_PDU = 18 -->
+                <registered_type name="DIS::PDU::Data_Query_PDU"
+                                 type_name="DIS::PDU::Data_Query_PDU" />
+                <!-- Set_Data_PDU = 19 -->
+                <registered_type name="DIS::PDU::Set_Data_PDU"
+                                 type_name="DIS::PDU::Set_Data_PDU" />
+                <!-- Data_PDU = 20 -->
+                <registered_type name="DIS::PDU::Data_PDU"
+                                 type_name="DIS::PDU::Data_PDU" />
+                <!-- Event_Report_PDU = 21 -->
+                <registered_type name="DIS::PDU::Event_Report_PDU"
+                                 type_name="DIS::PDU::Event_Report_PDU" />
+                <!-- Message_PDU = 22 -->
+                <!--<registered_type name="DIS::PDU::Message_PDU"
+                                     type_name="DIS::PDU::Message_PDU"/>-->
+                <!-- Electromagnetic_Emission_PDU = 23 -->
+                <registered_type name="DIS::PDU::Electromagnetic_Emission_PDU"
+                                 type_name="DIS::PDU::Electromagnetic_Emission_PDU" />
+                <!-- Designator_PDU = 24 -->
+                <registered_type name="DIS::PDU::Designator_PDU"
+                                 type_name="DIS::PDU::Designator_PDU" />
+                <!-- Transmitter_PDU = 25 -->
+                <registered_type name="DIS::PDU::Transmitter_PDU"
+                                 type_name="DIS::PDU::Transmitter_PDU" />
+                <!-- Signal_PDU = 26 -->
+                <registered_type name="DIS::PDU::Signal_PDU"
+                                 type_name="DIS::PDU::Signal_PDU" />
+                <!-- Receiver_PDU = 27 -->
+                <registered_type name="DIS::PDU::Receiver_PDU"
+                                 type_name="DIS::PDU::Receiver_PDU" />
+                <!-- IFF_ATC_NAVAIDS_PDU = 28 -->
+                <!--<registered_type name="DIS::PDU::IFF_ATC_NAVAIDS_PDU"
+                                     type_name="DIS::PDU::IFF_ATC_NAVAIDS_PDU"/>-->
+                <!-- UnderwaterAcoustic_PDU = 29 -->
+                <!--<registered_type name="DIS::PDU::UnderwaterAcoustic_PDU"
+                                     type_name="DIS::PDU::UnderwaterAcoustic_PDU"/>-->
+                <!-- SupplementalEmission_EntityState_PDU = 30 -->
+                <!--<registered_type name="DIS::PDU::SupplementalEmission_EntityState_PDU"
+                                     type_name="DIS::PDU::SupplementalEmission_EntityState_PDU"/>-->
+                <!-- IntercomSignal_PDU = 31 -->
+                <registered_type name="DIS::PDU::IntercomSignal_PDU"
+                                 type_name="DIS::PDU::Intercom_Signal_PDU" />
+                <!-- IntercomControl_PDU = 32 -->
+                <registered_type name="DIS::PDU::IntercomControl_PDU"
+                                 type_name="DIS::PDU::Intercom_Control_PDU" />
+                <!-- 33_PDU = 33 -->
+                <registered_type name="DIS::PDU::33_PDU"
+                                 type_name="DIS::PDU::Aggregate_State_PDU" />
+                <!-- IsGroupOf_PDU = 34 -->
+                <registered_type name="DIS::PDU::IsGroupOf_PDU"
+                                 type_name="DIS::PDU::IsGroupOf_PDU" />
+                <!-- TransferControl_PDU = 35 -->
+                <registered_type name="DIS::PDU::Transfer_Control_Request_PDU"
+                                 type_name="DIS::PDU::Transfer_Control_Request_PDU" />
+                <!-- IsPartOf_PDU = 36 -->
+                <registered_type name="DIS::PDU::IsPartOf_PDU" type_name="DIS::PDU::IsPartOf_PDU" />
+                <!-- MinefieldState_PDU = 37 -->
+                <!--<registered_type name="DIS::PDU::MinefieldState_PDU"
+                                     type_name="DIS::PDU::MinefieldState_PDU"/>-->
+                <!-- MinefieldQuery_PDU = 38 -->
+                <!--<registered_type name="DIS::PDU::MinefieldQuery_PDU"
+                                     type_name="DIS::PDU::MinefieldQuery_PDU"/>-->
+                <!-- MinefieldData_PDU = 39 -->
+                <!--<registered_type name="DIS::PDU::MinefieldData_PDU"
+                                     type_name="DIS::PDU::MinefieldData_PDU"/>-->
+                <!-- MinefieldResponseNAK_PDU = 40 -->
+                <!--<registered_type name="DIS::PDU::MinefieldResponseNAK_PDU"
+                                     type_name="DIS::PDU::MinefieldResponseNAK_PDU"/>-->
+                <!-- EnvironmentalProcess_PDU = 41 -->
+                <registered_type name="DIS::PDU::Environmental_Process_PDU"
+                                 type_name="DIS::PDU::Environmental_Process_PDU" />
+                <!-- GriddedData_PDU = 42 -->
+                <registered_type name="DIS::PDU::Gridded_Data_PDU"
+                                 type_name="DIS::PDU::Gridded_Data_PDU" />
+                <!-- PointObjectState_PDU = 43 -->
+                <registered_type name="DIS::PDU::Point_Object_State_PDU"
+                                 type_name="DIS::PDU::Point_Object_State_PDU" />
+                <!-- LinearObjectState_PDU = 44 -->
+                <registered_type name="DIS::PDU::Linear_Object_State_PDU"
+                                 type_name="DIS::PDU::Linear_Object_State_PDU" />
+                <!-- ArealObjectState_PDU = 45 -->
+                <registered_type name="DIS::PDU::Areal_Object_State_PDU"
+                                 type_name="DIS::PDU::Areal_Object_State_PDU" />
+                <!-- TSPI_PDU = 46 -->
+                <registered_type name="DIS::PDU::TSPI_PDU"
+                                 type_name="DIS::PDU::TSPI_PDU" />
+                <!-- Appearance_PDU = 47 -->
+                <!--<registered_type name="DIS::PDU::Appearance_PDU"
+                                     type_name="DIS::PDU::Appearance_PDU"/>-->
+                <!-- ArticulatedParts_PDU = 48 -->
+                <!--<registered_type name="DIS::PDU::Articulated_Parts_PDU"
+                                     type_name="DIS::PDU::Articulated_Parts_PDU"/>-->
+                <!-- LEFire_PDU = 49 -->
+                <registered_type name="DIS::PDU::LE_Fire_PDU"
+                                 type_name="DIS::PDU::LE_Fire_PDU" />
+                <!-- LEDetonation_PDU = 50 -->
+                <registered_type name="DIS::PDU::LE_Detonation_PDU"
+                                 type_name="DIS::PDU::LE_Detonation_PDU" />
+                <!-- CreateEntity_R_PDU = 51 -->
+                <registered_type name="DIS::PDU::CreateEntity_R_PDU"
+                                 type_name="DIS::PDU::Create_Entity_PDU" />
+                <!-- RemoveEntity_R_PDU = 52 -->
+                <registered_type name="DIS::PDU::RemoveEntity_R_PDU"
+                                 type_name="DIS::PDU::Remove_Entity_PDU" />
+                <!-- Start_Resume_R_PDU = 53 -->
+                <registered_type name="DIS::PDU::Start_Resume_R_PDU"
+                                 type_name="DIS::PDU::Start_Resume_PDU" />
+                <!-- Stop_Freeze_R_PDU = 54 -->
+                <registered_type name="DIS::PDU::Stop_Freeze_R_PDU"
+                                 type_name="DIS::PDU::Stop_Freeze_PDU" />
+                <!-- Acknowledge_R_PDU = 55 -->
+                <registered_type name="DIS::PDU::Acknowledge_R_PDU"
+                                 type_name="DIS::PDU::Acknowledge_PDU" />
+                <!-- ActionRequest_R_PDU = 56 -->
+                <registered_type name="DIS::PDU::ActionRequest_R_PDU"
+                                 type_name="DIS::PDU::Action_Request_PDU" />
+                <!-- ActionResponse_R_PDU = 57 -->
+                <registered_type name="DIS::PDU::ActionResponse_R_PDU"
+                                 type_name="DIS::PDU::Action_Response_PDU" />
+                <!-- DataQuery_R_PDU = 58 -->
+                <registered_type name="DIS::PDU::DataQuery_R_PDU"
+                                 type_name="DIS::PDU::Data_Query_PDU" />
+                <!-- Set60_PDU = 59 -->
+                <registered_type name="DIS::PDU::Set60_PDU"
+                                 type_name="DIS::PDU::Set_Data_PDU" />
+                <!-- 60_PDU = 60 -->
+                <registered_type name="DIS::PDU::60_PDU"
+                                 type_name="DIS::PDU::Data_PDU" />
+                <!-- EventReport_R_PDU = 61 -->
+                <registered_type name="DIS::PDU::EventReport_R_PDU"
+                                 type_name="DIS::PDU::Event_Report_PDU" />
+                <!-- Comment_R_PDU = 62 -->
+                <registered_type name="DIS::PDU::Comment_R_PDU"
+                                 type_name="DIS::PDU::Comment_PDU" />
+                <!-- Record_R_PDU = 63 -->
+                <registered_type name="DIS::PDU::Record_R_PDU"
+                                 type_name="DIS::PDU::Record_R_PDU" />
+                <!-- SetRecord_R_PDU = 64 -->
+                <registered_type name="DIS::PDU::Set_Record_R_PDU"
+                                 type_name="DIS::PDU::Set_Record_R_PDU" />
+                <!-- RecordQuery_R_PDU = 65 -->
+                <registered_type name="DIS::PDU::Record_Query_R_PDU"
+                                 type_name="DIS::PDU::Record_Query_R_PDU" />
+                <!-- Collision_Elastic_PDU = 66 -->
+                <registered_type name="DIS::PDU::Collision_Elastic_PDU"
+                                 type_name="DIS::PDU::Collision_Elastic_PDU" />
+                <!-- EntityStateUpdate_PDU = 67 -->
+                <registered_type name="DIS::PDU::Entity_State_Update_PDU"
+                                 type_name="DIS::PDU::Entity_State_Update_PDU" />
+                <!-- DirectedEnergyFire_PDU = 68 -->
+                <registered_type name="DIS::PDU::Directed_Energy_Fire_PDU"
+                                 type_name="DIS::PDU::Directed_Energy_Fire_PDU" />
+                <!-- EntityDamageStatus_PDU = 69 -->
+                <registered_type name="DIS::PDU::Entity_Damage_Status_PDU"
+                                 type_name="DIS::PDU::Entity_Damage_Status_PDU" />
+                <!-- IO_Action_PDU = 70 -->
+                <!--<registered_type name="DIS::PDU::IO_Action_PDU"
+                                     type_name="DIS::PDU::IO_Action_PDU"/>-->
+                <!-- IO_Report_PDU = 71 -->
+                <!--<registered_type name="DIS::PDU::IO_Report_PDU"
+                                     type_name="DIS::PDU::IO_Report_PDU"/>-->
+                <!-- Attribute_PDU = 72 -->
+                <!--<registered_type name="DIS::PDU::Attribute_PDU"
+                                     type_name="DIS::PDU::Attribute_PDU"/>-->
+                <!-- Announce_Object_PDU = 129 -->
+                <!--<registered_type name="DIS::PDU::Announce_Object_PDU"
+                                     type_name="DIS::PDU::Announce_Object_PDU"/>-->
+                <!-- Delete_Object_PDU = 130 -->
+                <!--<registered_type name="DIS::PDU::Delete_Object_PDU"
+                                     type_name="DIS::PDU::Delete_Object_PDU"/>-->
+                <!-- Describe_Event_PDU = 132 -->
+                <!--<registered_type name="DIS::PDU::Describe_Event_PDU"
+                                     type_name="DIS::PDU::Describe_Event_PDU"/>-->
+                <!-- Describe_Object_PDU = 133 -->
+                <!--<registered_type name="DIS::PDU::Describe_Object_PDU"
+                                     type_name="DIS::PDU::Describe_Object_PDU"/>-->
+                <!-- Request_Event_PDU = 134 -->
+                <!--<registered_type name="DIS::PDU::Request_Event_PDU"
+                                     type_name="DIS::PDU::Request_Event_PDU"/>-->
+                <!-- Request_Object_PDU = 135 -->
+                <!--<registered_type name="DIS::PDU::Request_Object_PDU"
+                                     type_name="DIS::PDU::Request_Object_PDU"/>-->
+            </connection>
+
+            <participant name="DDS_DIS_Participant">
+                <domain_id>10</domain_id>
+                <participant_qos base_name="DIS_1_0_QoS_Library::Base_Participant_QoS" />
+            </participant>
+
+            <session name="Session">
+
+                <!-- *******************************************************-->
+                <!--               DIS to DDS Routes                        -->
+                <!-- *******************************************************-->
+
+                <route name="Entity_State_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                        <stream_name>ENTITY_STATE</stream_name>
+                        <registered_type_name>DIS::PDU::Entity_State_PDU</registered_type_name>
+                        <!--<creation_mode>IMMEDIATE</creation_mode>-->
+                        <property>
+                            <value>
+                                <element>
+                                    <name>message_type</name>
+                                    <value>01</value>
+                                </element>
+                                <element>
+                                    <name>message_length</name>
+                                    <value>TBD</value>
+                                </element>
+                            </value>
+                        </property>
+                    </input>
+                    <dds_output name="red" participant="DDS_DIS_Participant">
+                        <topic_name>ENTITY_STATE</topic_name>
+                        <registered_type_name>DIS::PDU::Entity_State_PDU</registered_type_name>
+                        <!--<creation_mode>IMMEDIATE</creation_mode>-->
+                        <datawriter_qos base_name="DIS_1_0_QoS_Library::Best_Effort_Deadline" />
+                    </dds_output>
+                    <dds_output name="green" participant="DDS_DIS_Participant">
+                        <topic_name>ENTITY_STATE</topic_name>
+                        <registered_type_name>DIS::PDU::Entity_State_PDU</registered_type_name>
+                        <!--<creation_mode>IMMEDIATE</creation_mode>-->
+                        <datawriter_qos base_name="DIS_1_0_QoS_Library::Best_Effort_Deadline" />
+                    </dds_output>
+                    <dds_output name="blue" participant="DDS_DIS_Participant">
+                        <topic_name>ENTITY_STATE</topic_name>
+                        <registered_type_name>DIS::PDU::Entity_State_PDU</registered_type_name>
+                        <!--<creation_mode>IMMEDIATE</creation_mode>-->
+                        <datawriter_qos base_name="DIS_1_0_QoS_Library::Best_Effort_Deadline" />
+                    </dds_output>
+                </route>
+
+                <route name="Fire_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                        <stream_name>FIRE</stream_name>
+                        <registered_type_name>DIS::PDU::Fire_PDU</registered_type_name>
+                        <property>
+                            <value>
+                                <element>
+                                    <name>message_type</name>
+                                    <value>02</value>
+                                </element>
+                                <element>
+                                    <name>message_length</name>
+                                    <value>TBD</value>
+                                </element>
+                            </value>
+                        </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                        <topic_name>FIRE</topic_name>
+                        <registered_type_name>DIS::PDU::Fire_PDU</registered_type_name>
+                        <datawriter_qos base_name="DIS_1_0_QoS_Library::Durable_State" />
+                    </dds_output>
+                </route>
+
+                <route name="Detonation_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                        <stream_name>DETONATION</stream_name>
+                        <registered_type_name>DIS::PDU::Detonation_PDU</registered_type_name>
+                        <property>
+                            <value>
+                                <element>
+                                    <name>message_type</name>
+                                    <value>3</value>
+                                </element>
+                                <element>
+                                    <name>message_length</name>
+                                    <value>TBD</value>
+                                </element>
+                            </value>
+                        </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                        <topic_name>DETONATION</topic_name>
+                        <registered_type_name>DIS::PDU::Detonation_PDU</registered_type_name>
+                        <datawriter_qos base_name="DIS_1_0_QoS_Library::Durable_State" />
+                    </dds_output>
+                </route>
+
+                <!--
+                <route name="Collision_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                        <stream_name>COLLISION</stream_name>
+                        <registered_type_name>DIS::PDU::Collision_PDU</registered_type_name>
+                        <property>
+                        <value>
+                            <element>
+                            <name>message_type</name>
+                            <value>4</value>
+                            </element>
+                            <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                            </element>
+                        </value>
+                        </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                        <topic_name>COLLISION</topic_name>
+                        <registered_type_name>DIS::PDU::Collision_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Create_Entity_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>CREATE_ENTITY</stream_name>
+                    <registered_type_name>DIS::PDU::Create_Entity_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>11</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>CREATE_ENTITY</topic_name>
+                    <registered_type_name>DIS::PDU::Create_Entity_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Remove_Entity_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>REMOVE_ENTITY</stream_name>
+                    <registered_type_name>DIS::PDU::Remove_Entity_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>12</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>REMOVE_ENTITY</topic_name>
+                    <registered_type_name>DIS::PDU::Remove_Entity_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Start_Resume_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>START_RESUME</stream_name>
+                    <registered_type_name>DIS::PDU::Start_Resume_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>13</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>START_RESUME</topic_name>
+                    <registered_type_name>DIS::PDU::Start_Resume_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Stop_Freeze_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>STOP_FREEZE</stream_name>
+                    <registered_type_name>DIS::PDU::Stop_Freeze_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>14</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>STOP_FREEZE</topic_name>
+                    <registered_type_name>DIS::PDU::Stop_Freeze_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Acknowledge_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>ACKNOWLEDGE</stream_name>
+                    <registered_type_name>DIS::PDU::Acknowledge_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>15</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>ACKNOWLEDGE</topic_name>
+                    <registered_type_name>DIS::PDU::Acknowledge_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Action_Request_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>ACTION_REQUEST</stream_name>
+                    <registered_type_name>DIS::PDU::Action_Request_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>16</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>ACTION_REQUEST</topic_name>
+                    <registered_type_name>DIS::PDU::Action_Request_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Action_Response_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>ACTION_RESPONSE</stream_name>
+                    <registered_type_name>DIS::PDU::Action_Response_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>17</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>ACTION_RESPONSE</topic_name>
+                    <registered_type_name>DIS::PDU::Action_Response_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Data_Query_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>DATA_QUERY</stream_name>
+                    <registered_type_name>DIS::PDU::Data_Query_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>18</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>DATA_QUERY</topic_name>
+                    <registered_type_name>DIS::PDU::Data_Query_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Set_Data_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>SET_DATA</stream_name>
+                    <registered_type_name>DIS::PDU::Set_Data_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>19</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>SET_DATA</topic_name>
+                    <registered_type_name>DIS::PDU::Set_Data_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Data_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                        <stream_name>DATA</stream_name>
+                        <registered_type_name>DIS::PDU::Data_PDU</registered_type_name>
+                        <property>
+                        <value>
+                            <element>
+                            <name>message_type</name>
+                            <value>20</value>
+                            </element>
+                            <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                            </element>
+                        </value>
+                        </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                        <topic_name>DATA</topic_name>
+                        <registered_type_name>DIS::PDU::Data_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Event_Report_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                        <stream_name>EVENT_REPORT</stream_name>
+                        <registered_type_name>DIS::PDU::Event_Report_PDU</registered_type_name>
+                        <property>
+                        <value>
+                            <element>
+                            <name>message_type</name>
+                            <value>21</value>
+                            </element>
+                            <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                            </element>
+                        </value>
+                        </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                        <topic_name>EVENT_REPORT</topic_name>
+                        <registered_type_name>DIS::PDU::Event_Report_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Electromagnetic_Emission_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>ELECTROMAGNETIC_EMISSION</stream_name>
+                    <registered_type_name>DIS::PDU::Electromagnetic_Emission_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>23</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>ELECTROMAGNETIC_EMISSION</topic_name>
+                    <registered_type_name>DIS::PDU::Electromagnetic_Emission_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Designator_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>DESIGNATOR</stream_name>
+                    <registered_type_name>DIS::PDU::Designator_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>24</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>DESIGNATOR</topic_name>
+                    <registered_type_name>DIS::PDU::Designator_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Transmitter_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>TRANSMITTER</stream_name>
+                    <registered_type_name>DIS::PDU::Transmitter_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>25</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>TRANSMITTER</topic_name>
+                    <registered_type_name>DIS::PDU::Transmitter_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Signal_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>SIGNAL</stream_name>
+                    <registered_type_name>DIS::PDU::Signal_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>26</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>SIGNAL</topic_name>
+                    <registered_type_name>DIS::PDU::Signal_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Receiver_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>RECEIVER</stream_name>
+                    <registered_type_name>DIS::PDU::Receiver_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>27</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>RECEIVER</topic_name>
+                    <registered_type_name>DIS::PDU::Receiver_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="IntercomSignal_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>INTERCOMSIGNAL</stream_name>
+                    <registered_type_name>DIS::PDU::IntercomSignal_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>31</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>INTERCOMSIGNAL</topic_name>
+                    <registered_type_name>DIS::PDU::IntercomSignal_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="IntercomControl_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>INTERCOMCONTROL</stream_name>
+                    <registered_type_name>DIS::PDU::IntercomControl_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>32</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>INTERCOMCONTROL</topic_name>
+                    <registered_type_name>DIS::PDU::IntercomControl_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="AggregateState_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>AGGREGATESTATE</stream_name>
+                    <registered_type_name>DIS::PDU::AggregateState_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>33</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>AGGREGATESTATE</topic_name>
+                    <registered_type_name>DIS::PDU::AggregateState_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="IsGroupOf_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>ISGROUPOF</stream_name>
+                    <registered_type_name>DIS::PDU::IsGroupOf_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>34</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>ISGROUPOF</topic_name>
+                    <registered_type_name>DIS::PDU::IsGroupOf_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Transfer_Control_Request_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>TRANSFER_CONTROL_REQUEST</stream_name>
+                    <registered_type_name>DIS::PDU::Transfer_Control_Request_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>35</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>TRANSFER_CONTROL_REQUEST</topic_name>
+                    <registered_type_name>DIS::PDU::Transfer_Control_Request_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                 <route name="IsPartOf_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>ISPARTOF</stream_name>
+                    <registered_type_name>DIS::PDU::IsPartOf_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>36</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>ISPARTOF</topic_name>
+                    <registered_type_name>DIS::PDU::IsPartOf_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Environmental_Process_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>ENVIRONMENTAL_PROCESS</stream_name>
+                    <registered_type_name>DIS::PDU::Environmental_Process_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>41</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>ENVIRONMENTAL_PROCESS</topic_name>
+                    <registered_type_name>DIS::PDU::Environmental_Process_PDU</registered_type_name>
+                    <datawriter_qos>
+                        <reliability>
+                        <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+                        </reliability>
+                    </datawriter_qos>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Gridded_Data_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>GRIDDED_DATA</stream_name>
+                    <registered_type_name>DIS::PDU::Gridded_Data_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>42</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>GRIDDED_DATA</topic_name>
+                    <registered_type_name>DIS::PDU::Gridded_Data_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Point_Object_State_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>POINT_OBJECT_STATE</stream_name>
+                    <registered_type_name>DIS::PDU::Point_Object_State_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>43</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>POINT_OBJECT_STATE</topic_name>
+                    <registered_type_name>DIS::PDU::Point_Object_State_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Linear_Object_State_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>LINEAR_OBJECT_STATE</stream_name>
+                    <registered_type_name>DIS::PDU::Linear_Object_State_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>44</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>LINEAR_OBJECT_STATE</topic_name>
+                    <registered_type_name>DIS::PDU::Linear_Object_State_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Areal_Object_State_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>AREAL_OBJECT_STATE</stream_name>
+                    <registered_type_name>DIS::PDU::Areal_Object_State_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>45</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>AREAL_OBJECT_STATE</topic_name>
+                    <registered_type_name>DIS::PDU::Areal_Object_State_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="TSPI_PDU_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>TSPI_PDU</stream_name>
+                    <registered_type_name>DIS::PDU::TSPI_PDU_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>46</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>TSPI_PDU</topic_name>
+                    <registered_type_name>DIS::PDU::TSPI_PDU_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="LE_Fire_PDU_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>LE_FIRE</stream_name>
+                    <registered_type_name>DIS::PDU::LE_Fire_PDU_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>49</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>LE_FIRE</topic_name>
+                    <registered_type_name>DIS::PDU::LE_Fire_PDU_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="LE_Detonation_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                        <stream_name>LE_DETONATION</stream_name>
+                        <registered_type_name>DIS::PDU::LE_Detonation_PDU</registered_type_name>
+                        <property>
+                        <value>
+                            <element>
+                            <name>message_type</name>
+                            <value>50</value>
+                            </element>
+                            <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                            </element>
+                        </value>
+                        </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                        <topic_name>LE_DETONATION</topic_name>
+                        <registered_type_name>DIS::PDU::LE_Detonation_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="CreateEntity_R_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                        <stream_name>CREATEENTITY_R</stream_name>
+                        <registered_type_name>DIS::PDU::CreateEntity_R_PDU</registered_type_name>
+                        <property>
+                        <value>
+                            <element>
+                            <name>message_type</name>
+                            <value>51</value>
+                            </element>
+                            <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                            </element>
+                        </value>
+                        </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                        <topic_name>CREATEENTITY_R</topic_name>
+                        <registered_type_name>DIS::PDU::CreateEntity_R_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="RemoveEntity_R_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>REMOVEENTITY_R</stream_name>
+                    <registered_type_name>DIS::PDU::RemoveEntity_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>52</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>REMOVEENTITY_R</topic_name>
+                    <registered_type_name>DIS::PDU::RemoveEntity_R_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Start_Resume_R_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>START_RESUME_R</stream_name>
+                    <registered_type_name>DIS::PDU::Start_Resume_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>53</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>START_RESUME_R</topic_name>
+                    <registered_type_name>DIS::PDU::Start_Resume_R_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Stop_Freeze_R_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>STOP_FREEZE_R</stream_name>
+                    <registered_type_name>DIS::PDU::Stop_Freeze_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>54</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>STOP_FREEZE_R</topic_name>
+                    <registered_type_name>DIS::PDU::Stop_Freeze_R_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Acknowledge_R_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>ACKNOWLEDGE_R</stream_name>
+                    <registered_type_name>DIS::PDU::Acknowledge_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>55</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>ACKNOWLEDGE_R</topic_name>
+                    <registered_type_name>DIS::PDU::Acknowledge_R_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="ActionRequest_R_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>ACTIONREQUEST_R</stream_name>
+                    <registered_type_name>DIS::PDU::ActionRequest_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>56</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>ACTIONREQUEST_R</topic_name>
+                    <registered_type_name>DIS::PDU::ActionRequest_R_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="ActionResponse_R_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>ACTIONRESPONSE_R</stream_name>
+                    <registered_type_name>DIS::PDU::ActionResponse_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>57</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>ACTIONRESPONSE_R</topic_name>
+                    <registered_type_name>DIS::PDU::ActionResponse_R_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="DataQuery_R_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>DATAQUERY_R</stream_name>
+                    <registered_type_name>DIS::PDU::DataQuery_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>58</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>DATAQUERY_R</topic_name>
+                    <registered_type_name>DIS::PDU::DataQuery_R_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Set60_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>SET60</stream_name>
+                    <registered_type_name>DIS::PDU::Set60_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>59</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>SET60</topic_name>
+                    <registered_type_name>DIS::PDU::Set60_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Data_R_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>DATA_R</stream_name>
+                    <registered_type_name>DIS::PDU::Data_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>60</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>DATA_R</topic_name>
+                    <registered_type_name>DIS::PDU::Data_R_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="EventReport_R_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>EVENTREPORT_R</stream_name>
+                    <registered_type_name>DIS::PDU::EventReport_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>61</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>EVENTREPORT_R</topic_name>
+                    <registered_type_name>DIS::PDU::EventReport_R_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Comment_R_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>COMMENT_R</stream_name>
+                    <registered_type_name>DIS::PDU::Comment_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>62</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>COMMENT_R</topic_name>
+                    <registered_type_name>DIS::PDU::Comment_R_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Record_R_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>RECORD_R</stream_name>
+                    <registered_type_name>DIS::PDU::Record_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>63</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>RECORD_R</topic_name>
+                    <registered_type_name>DIS::PDU::Record_R_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Set_Record_R_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>SET_RECORD_R</stream_name>
+                    <registered_type_name>DIS::PDU::Set_Record_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>64</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>SET_RECORD_R</topic_name>
+                    <registered_type_name>DIS::PDU::Set_Record_R_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Record_Query_R_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>RECORD_QUERY_R</stream_name>
+                    <registered_type_name>DIS::PDU::Record_Query_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>65</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>RECORD_QUERY_R</topic_name>
+                    <registered_type_name>DIS::PDU::Record_Query_R_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Collision_Elastic_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>COLLISION_ELASTIC</stream_name>
+                    <registered_type_name>DIS::PDU::Collision_Elastic_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>66</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>COLLISION_ELASTIC</topic_name>
+                    <registered_type_name>DIS::PDU::Collision_Elastic_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Entity_State_Update_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>ENTITY_STATE_UPDATE</stream_name>
+                    <registered_type_name>DIS::PDU::Entity_State_Update_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>67</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>ENTITY_STATE_UPDATE</topic_name>
+                    <registered_type_name>DIS::PDU::Entity_State_Update_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Directed_Energy_Fire_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>DIRECTED_ENERGY_FIRE</stream_name>
+                    <registered_type_name>DIS::PDU::Directed_Energy_Fire_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>68</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>DIRECTED_ENERGY_FIRE</topic_name>
+                    <registered_type_name>DIS::PDU::Directed_Energy_Fire_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!--
+                <route name="Entity_Damage_Status_PDU_to_DDS">
+                    <route_types>true</route_types>
+                    <input connection="DIS_Connection">
+                    <stream_name>ENTITY_DAMAGE_STATUS</stream_name>
+                    <registered_type_name>DIS::PDU::Entity_Damage_Status_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>69</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </input>
+                    <dds_output participant="DDS_DIS_Participant">
+                    <topic_name>ENTITY_DAMAGE_STATUS</topic_name>
+                    <registered_type_name>DIS::PDU::Entity_Damage_Status_PDU</registered_type_name>
+                    </dds_output>
+                </route>
+                -->
+
+                <!-- ****************************************************** -->
+                <!--                 DDS to DIS Routes                      -->
+                <!-- ****************************************************** -->
+                <route name="Entity_State_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                        <topic_name>ENTITY_STATE</topic_name>
+                        <registered_type_name>DIS::PDU::Entity_State_PDU</registered_type_name>
+                        <!--<creation_mode>IMMEDIATE</creation_mode>-->
+                        <datareader_qos base_name="DIS_1_0_QoS_Library::Best_Effort_Deadline" />
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                        <stream_name>ENTITY_STATE</stream_name>
+                        <registered_type_name>DIS::PDU::Entity_State_PDU</registered_type_name>
+                        <!--<creation_mode>IMMEDIATE</creation_mode>-->
+                        <property>
+                            <value>
+                                <element>
+                                    <name>message_type</name>
+                                    <value>1</value>
+                                </element>
+                                <element>
+                                    <name>message_length</name>
+                                    <value>TBD</value>
+                                </element>
+                            </value>
+                        </property>
+                    </output>
+                </route>
+
+                <route name="Fire_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                        <topic_name>FIRE</topic_name>
+                        <registered_type_name>DIS::PDU::Fire_PDU</registered_type_name>
+                        <datareader_qos base_name="DIS_1_0_QoS_Library::Durable_State" />
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                        <stream_name>FIRE</stream_name>
+                        <registered_type_name>DIS::PDU::Fire_PDU</registered_type_name>
+                        <property>
+                            <value>
+                                <element>
+                                    <name>message_type</name>
+                                    <value>2</value>
+                                </element>
+                                <element>
+                                    <name>message_length</name>
+                                    <value>TBD</value>
+                                </element>
+                            </value>
+                        </property>
+                    </output>
+                </route>
+
+                <route name="Detonation_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                        <topic_name>DETONATION</topic_name>
+                        <registered_type_name>DIS::PDU::Detonation_PDU</registered_type_name>
+                        <datareader_qos base_name="DIS_1_0_QoS_Library::Durable_State" />
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                        <stream_name>DETONATION</stream_name>
+                        <registered_type_name>DIS::PDU::Detonation_PDU</registered_type_name>
+                        <property>
+                            <value>
+                                <element>
+                                    <name>message_type</name>
+                                    <value>3</value>
+                                </element>
+                                <element>
+                                    <name>message_length</name>
+                                    <value>TBD</value>
+                                </element>
+                            </value>
+                        </property>
+                    </output>
+                </route>
+
+                <!--
+                <route name="Collision_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>COLLISION</topic_name>
+                    <registered_type_name>DIS::PDU::Collision_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>COLLISION</stream_name>
+                    <registered_type_name>DIS::PDU::Collision_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>4</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Create_Entity_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>CREATE_ENTITY</topic_name>
+                    <registered_type_name>DIS::PDU::Create_Entity_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>CREATE_ENTITY</stream_name>
+                    <registered_type_name>DIS::PDU::Create_Entity_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>11</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Remove_Entity_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>REMOVE_ENTITY</topic_name>
+                    <registered_type_name>DIS::PDU::Remove_Entity_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>REMOVE_ENTITY</stream_name>
+                    <registered_type_name>DIS::PDU::Remove_Entity_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>12</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Start_Resume_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>START_RESUME</topic_name>
+                    <registered_type_name>DIS::PDU::Start_Resume_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>START_RESUME</stream_name>
+                    <registered_type_name>DIS::PDU::Start_Resume_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>13</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Stop_Freeze_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>STOP_FREEZE</topic_name>
+                    <registered_type_name>DIS::PDU::Stop_Freeze_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>STOP_FREEZE</stream_name>
+                    <registered_type_name>DIS::PDU::Stop_Freeze_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>14</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Acknowledge_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>ACKNOWLEDGE</topic_name>
+                    <registered_type_name>DIS::PDU::Acknowledge_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>ACKNOWLEDGE</stream_name>
+                    <registered_type_name>DIS::PDU::Acknowledge_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>15</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Action_Request_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>ACTION_REQUEST</topic_name>
+                    <registered_type_name>DIS::PDU::Action_Request_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>ACTION_REQUEST</stream_name>
+                    <registered_type_name>DIS::PDU::Action_Request_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>16</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Action_Response_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>ACTION_RESPONSE</topic_name>
+                    <registered_type_name>DIS::PDU::Action_Response_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>ACTION_RESPONSE</stream_name>
+                    <registered_type_name>DIS::PDU::Action_Response_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>17</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Data_Query_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>DATA_QUERY</topic_name>
+                    <registered_type_name>DIS::PDU::Data_Query_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>DATA_QUERY</stream_name>
+                    <registered_type_name>DIS::PDU::Data_Query_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>18</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Set_Data_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>SET_DATA</topic_name>
+                    <registered_type_name>DIS::PDU::Set_Data_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>SET_DATA</stream_name>
+                    <registered_type_name>DIS::PDU::Set_Data_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>19</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Data_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>DATA</topic_name>
+                    <registered_type_name>DIS::PDU::Data_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>DATA</stream_name>
+                    <registered_type_name>DIS::PDU::Data_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>20</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Event_Report_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>EVENT_REPORT</topic_name>
+                    <registered_type_name>DIS::PDU::Event_Report_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>EVENT_REPORT</stream_name>
+                    <registered_type_name>DIS::PDU::Event_Report_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>21</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Electromagnetic_Emission_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>ELECTROMAGNETIC_EMISSION</topic_name>
+                    <registered_type_name>DIS::PDU::Electromagnetic_Emission_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>ELECTROMAGNETIC_EMISSION</stream_name>
+                    <registered_type_name>DIS::PDU::Electromagnetic_Emission_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>23</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Designator_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>DESIGNATOR</topic_name>
+                    <registered_type_name>DIS::PDU::Designator_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>DESIGNATOR</stream_name>
+                    <registered_type_name>DIS::PDU::Designator_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>24</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Transmitter_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>TRANSMITTER</topic_name>
+                    <registered_type_name>DIS::PDU::Transmitter_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>TRANSMITTER</stream_name>
+                    <registered_type_name>DIS::PDU::Transmitter_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>25</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Signal_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>SIGNAL</topic_name>
+                    <registered_type_name>DIS::PDU::Signal_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>SIGNAL</stream_name>
+                    <registered_type_name>DIS::PDU::Signal_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>26</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Receiver_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>RECEIVER</topic_name>
+                    <registered_type_name>DIS::PDU::Receiver_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>RECEIVER</stream_name>
+                    <registered_type_name>DIS::PDU::Receiver_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>27</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="IntercomSignal_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>INTERCOMSIGNAL</topic_name>
+                    <registered_type_name>DIS::PDU::IntercomSignal_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>INTERCOMSIGNAL</stream_name>
+                    <registered_type_name>DIS::PDU::IntercomSignal_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>31</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="IntercomControl_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>INTERCOMCONTROL</topic_name>
+                    <registered_type_name>DIS::PDU::IntercomControl_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>INTERCOMCONTROL</stream_name>
+                    <registered_type_name>DIS::PDU::IntercomControl_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>32</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="AggregateState_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>AGGREGATESTATE</topic_name>
+                    <registered_type_name>DIS::PDU::AggregateState_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>AGGREGATESTATE</stream_name>
+                    <registered_type_name>DIS::PDU::AggregateState_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>33</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="IsGroupOf_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>ISGROUPOF</topic_name>
+                    <registered_type_name>DIS::PDU::IsGroupOf_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>ISGROUPOF</stream_name>
+                    <registered_type_name>DIS::PDU::IsGroupOf_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>34</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Transfer_Control_Request_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>TRANSFER_CONTROL_REQUEST</topic_name>
+                    <registered_type_name>DIS::PDU::Transfer_Control_Request_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>TRANSFER_CONTROL_REQUEST</stream_name>
+                    <registered_type_name>DIS::PDU::Transfer_Control_Request_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>35</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="IsPartOf_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>ISPARTOF</topic_name>
+                    <registered_type_name>DIS::PDU::IsPartOf_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>ISPARTOF</stream_name>
+                    <registered_type_name>DIS::PDU::IsPartOf_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>36</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Environmental_Process_PDU_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>ENVIRONMENTAL_PROCESS</topic_name>
+                    <registered_type_name>DIS::PDU::Environmental_Process_PDU</registered_type_name>
+                    <datareader_qos>
+                        <reliability>
+                        <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+                        </reliability>
+                    </datareader_qos>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>ENVIRONMENTAL_PROCESS</stream_name>
+                    <registered_type_name>DIS::PDU::Environmental_Process_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>41</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Gridded_Data_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>GRIDDED_DATA</topic_name>
+                    <registered_type_name>DIS::PDU::Gridded_Data_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>GRIDDED_DATA</stream_name>
+                    <registered_type_name>DIS::PDU::Gridded_Data_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>42</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Point_Object_State_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>POINT_OBJECT_STATE</topic_name>
+                    <registered_type_name>DIS::PDU::Point_Object_State_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>POINT_OBJECT_STATE</stream_name>
+                    <registered_type_name>DIS::PDU::Point_Object_State_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>43</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Linear_Object_State_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>LINEAR_OBJECT_STATE</topic_name>
+                    <registered_type_name>DIS::PDU::Linear_Object_State_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>LINEAR_OBJECT_STATE</stream_name>
+                    <registered_type_name>DIS::PDU::Linear_Object_State_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>44</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Areal_Object_State_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                        <topic_name>AREAL_OBJECT_STATE</topic_name>
+                        <registered_type_name>DIS::PDU::Areal_Object_State_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                        <stream_name>AREAL_OBJECT_STATE</stream_name>
+                        <registered_type_name>DIS::PDU::Areal_Object_State_PDU</registered_type_name>
+                        <property>
+                        <value>
+                            <element>
+                            <name>message_type</name>
+                            <value>45</value>
+                            </element>
+                            <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                            </element>
+                        </value>
+                        </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="TSPI_PDU_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>TSPI_PDU</topic_name>
+                    <registered_type_name>DIS::PDU::TSPI_PDU_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>TSPI_PDU</stream_name>
+                    <registered_type_name>DIS::PDU::TSPI_PDU_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>46</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="LE_Fire_PDU_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>LE_FIRE</topic_name>
+                    <registered_type_name>DIS::PDU::LE_Fire_PDU_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>LE_FIRE</stream_name>
+                    <registered_type_name>DIS::PDU::LE_Fire_PDU_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>49</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="LE_Detonation_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>LE_DETONATION</topic_name>
+                    <registered_type_name>DIS::PDU::LE_Detonation_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>LE_DETONATION</stream_name>
+                    <registered_type_name>DIS::PDU::LE_Detonation_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>50</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="CreateEntity_R_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>CREATEENTITY_R</topic_name>
+                    <registered_type_name>DIS::PDU::CreateEntity_R_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>CREATEENTITY_R</stream_name>
+                    <registered_type_name>DIS::PDU::CreateEntity_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>51</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="RemoveEntity_R_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>REMOVEENTITY_R</topic_name>
+                    <registered_type_name>DIS::PDU::RemoveEntity_R_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>REMOVEENTITY_R</stream_name>
+                    <registered_type_name>DIS::PDU::RemoveEntity_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>52</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Start_Resume_R_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>START_RESUME_R</topic_name>
+                    <registered_type_name>DIS::PDU::Start_Resume_R_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>START_RESUME_R</stream_name>
+                    <registered_type_name>DIS::PDU::Start_Resume_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>53</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Stop_Freeze_R_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>STOP_FREEZE_R</topic_name>
+                    <registered_type_name>DIS::PDU::Stop_Freeze_R_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>STOP_FREEZE_R</stream_name>
+                    <registered_type_name>DIS::PDU::Stop_Freeze_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>54</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Acknowledge_R_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>ACKNOWLEDGE_R</topic_name>
+                    <registered_type_name>DIS::PDU::Acknowledge_R_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>ACKNOWLEDGE_R</stream_name>
+                    <registered_type_name>DIS::PDU::Acknowledge_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>55</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="ActionRequest_R_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>ACTIONREQUEST_R</topic_name>
+                    <registered_type_name>DIS::PDU::ActionRequest_R_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>ACTIONREQUEST_R</stream_name>
+                    <registered_type_name>DIS::PDU::ActionRequest_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>56</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="ActionResponse_R_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>ACTIONRESPONSE_R</topic_name>
+                    <registered_type_name>DIS::PDU::ActionResponse_R_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>ACTIONRESPONSE_R</stream_name>
+                    <registered_type_name>DIS::PDU::ActionResponse_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>57</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="DataQuery_R_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>DATAQUERY_R</topic_name>
+                    <registered_type_name>DIS::PDU::DataQuery_R_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>DATAQUERY_R</stream_name>
+                    <registered_type_name>DIS::PDU::DataQuery_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>58</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Set60_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>SET60</topic_name>
+                    <registered_type_name>DIS::PDU::Set60_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>SET60</stream_name>
+                    <registered_type_name>DIS::PDU::Set60_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>59</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Data_R_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>DATA_R</topic_name>
+                    <registered_type_name>DIS::PDU::Data_R_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>DATA_R</stream_name>
+                    <registered_type_name>DIS::PDU::Data_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>60</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="EventReport_R_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>EVENTREPORT_R</topic_name>
+                    <registered_type_name>DIS::PDU::EventReport_R_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>EVENTREPORT_R</stream_name>
+                    <registered_type_name>DIS::PDU::EventReport_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>61</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Comment_R_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>COMMENT_R</topic_name>
+                    <registered_type_name>DIS::PDU::Comment_R_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>COMMENT_R</stream_name>
+                    <registered_type_name>DIS::PDU::Comment_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>62</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Record_R_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>RECORD_R</topic_name>
+                    <registered_type_name>DIS::PDU::Record_R_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>RECORD_R</stream_name>
+                    <registered_type_name>DIS::PDU::Record_R_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>63</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Set_Record_R_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                        <topic_name>SET_RECORD_R</topic_name>
+                        <registered_type_name>DIS::PDU::Set_Record_R_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                        <stream_name>SET_RECORD_R</stream_name>
+                        <registered_type_name>DIS::PDU::Set_Record_R_PDU</registered_type_name>
+                        <property>
+                        <value>
+                            <element>
+                            <name>message_type</name>
+                            <value>64</value>
+                            </element>
+                            <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                            </element>
+                        </value>
+                        </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Record_Query_R_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                        <topic_name>RECORD_QUERY_R</topic_name>
+                        <registered_type_name>DIS::PDU::Record_Query_R_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                        <stream_name>RECORD_QUERY_R</stream_name>
+                        <registered_type_name>DIS::PDU::Record_Query_R_PDU</registered_type_name>
+                        <property>
+                        <value>
+                            <element>
+                            <name>message_type</name>
+                            <value>65</value>
+                            </element>
+                            <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                            </element>
+                        </value>
+                        </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Collision_Elastic_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                        <topic_name>COLLISION_ELASTIC</topic_name>
+                        <registered_type_name>DIS::PDU::Collision_Elastic_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                        <stream_name>COLLISION_ELASTIC</stream_name>
+                        <registered_type_name>DIS::PDU::Collision_Elastic_PDU</registered_type_name>
+                        <property>
+                        <value>
+                            <element>
+                            <name>message_type</name>
+                            <value>66</value>
+                            </element>
+                            <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                            </element>
+                        </value>
+                        </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Entity_State_Update_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                        <topic_name>ENTITY_STATE_UPDATE</topic_name>
+                        <registered_type_name>DIS::PDU::Entity_State_Update_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                        <stream_name>ENTITY_STATE_UPDATE</stream_name>
+                        <registered_type_name>DIS::PDU::Entity_State_Update_PDU</registered_type_name>
+                        <property>
+                        <value>
+                            <element>
+                            <name>message_type</name>
+                            <value>67</value>
+                            </element>
+                            <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                            </element>
+                        </value>
+                        </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Directed_Energy_Fire_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                    <topic_name>DIRECTED_ENERGY_FIRE</topic_name>
+                    <registered_type_name>DIS::PDU::Directed_Energy_Fire_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                    <stream_name>DIRECTED_ENERGY_FIRE</stream_name>
+                    <registered_type_name>DIS::PDU::Directed_Energy_Fire_PDU</registered_type_name>
+                    <property>
+                        <value>
+                        <element>
+                            <name>message_type</name>
+                            <value>68</value>
+                        </element>
+                        <element>
+                            <name>message_length</name>
+                            <value>TBD</value>
+                        </element>
+                        </value>
+                    </property>
+                    </output>
+                </route>
+                -->
+
+                <!--
+                <route name="Entity_Damage_Status_PDU_DDS_to_DIS">
+                    <route_types>true</route_types>
+                    <dds_input participant="DDS_DIS_Participant">
+                        <topic_name>ENTITY_DAMAGE_STATUS</topic_name>
+                        <registered_type_name>DIS::PDU::Entity_Damage_Status_PDU</registered_type_name>
+                    </dds_input>
+                    <output connection="DIS_Connection">
+                        <stream_name>ENTITY_DAMAGE_STATUS</stream_name>
+                        <registered_type_name>DIS::PDU::Entity_Damage_Status_PDU</registered_type_name>
+                        <property>
+                            <value>
+                                <element>
+                                    <name>message_type</name>
+                                    <value>69</value>
+                                </element>
+                                <element>
+                                    <name>message_length</name>
+                                    <value>TBD</value>
+                                </element>
+                            </value>
+                        </property>
+                    </output>
+                </route>
+                -->
+            </session>
+        </domain_route>
+    </routing_service>
+</dds>

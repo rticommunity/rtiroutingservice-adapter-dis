@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/mswick/ndds/rti_connext_dds-6.0.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+<include file="pdu/DIS_DDS_Constants.xml"/>
+<include file="pdu/Common_Header.xml"/>
+<module name="DIS">
+  <module name="PDU">
+    <const name="MAX_ENV_RECORDS" type="int32" value="(((DIS::DATA_TYPE::MAX_PDU_SIZE))-32)/12"/>
+    <const name="ENVIRONMENTAL_PROCESS_TOPIC_NAME" type="string" value="&quot;ENVIRONMENTAL_PROCESS&quot;"/>
+    <const name="ENVIRONMENTAL_PROCESS_QOS_PROFILE_NAME" type="string" value="(DIS::DDS_Constants::BEST_EFFORT_QOS)"/>
+    <struct name= "Environmental_Process_PDU">
+      <member name="m_Header" type="nonBasic"  nonBasicTypeName= "DIS::PDU::Header"/>
+      <member name="m_EnvProcID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EntityIdentifier"/>
+      <member name="m_EnvType" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EnvironmentType"/>
+      <member name="m_ui8ModelType" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8EnvStatus" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui16NumEnvRec" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16SeqNum" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_vEnvRecords" sequenceMaxLength="DIS::PDU::MAX_ENV_RECORDS" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EnvironmentRecord"/>
+    </struct>
+  </module>
+</module>
+</types>

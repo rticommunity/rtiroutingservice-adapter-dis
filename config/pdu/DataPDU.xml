@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/mswick/ndds/rti_connext_dds-6.0.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+<include file="pdu/DIS_DDS_Constants.xml"/>
+<include file="pdu/CommentPDU.xml"/>
+<module name="DIS">
+  <module name="PDU">
+    <const name="DATA_PDU_TOPIC_NAME" type="string" value="&quot;DATA_PDU&quot;"/>
+    <const name="DATA_PDU_QOS_PROFILE_NAME" type="string" value="(DIS::DDS_Constants::BEST_EFFORT_QOS)"/>
+    <struct name= "Data_PDU">
+      <member name="m_Header" type="nonBasic"  nonBasicTypeName= "DIS::PDU::Comment_PDU"/>
+      <member name="m_ui32RequestID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_ui32Padding" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+    </struct>
+  </module>
+</module>
+</types>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/mswick/ndds/rti_connext_dds-6.0.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+<include file="pdu/DIS_DDS_Constants.xml"/>
+<include file="pdu/Warfare_Header.xml"/>
+<module name="DIS">
+  <module name="PDU">
+    <const name="ENTITY_STATE_TOPIC_NAME" type="string" value="&quot;DIS_PDU_FIRE&quot;"/>
+    <const name="ENTITY_STATE_QOS_PROFILE_NAME" type="string" value="(DIS::DDS_Constants::DURABLE_STATE_QOS)"/>
+    <struct name= "Fire_PDU">
+      <member name="m_Header" type="nonBasic"  nonBasicTypeName= "DIS::PDU::Warfare_Header"/>
+      <member name="m_ui32FireMissionIndex" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_Location" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::WorldCoordinates"/>
+      <member name="m_BurstDescriptor" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::BurstDescriptor"/>
+      <member name="m_Velocity" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::Vector"/>
+      <member name="m_f32Range" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+    </struct>
+  </module>
+</module>
+</types>

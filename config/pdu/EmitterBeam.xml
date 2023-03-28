@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/mswick/ndds/rti_connext_dds-6.0.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+<include file="pdu/DIS_Data_Type.xml"/>
+<module name="DIS">
+  <module name="DATA_TYPE">
+    <struct name= "EmitterBeam" nested="true">
+      <member name="m_ui8BeamDataLength" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8EmitterBeamIDNumber" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui16BeamParamIndex" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_FundamentalParameterData" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FundamentalParameterData"/>
+      <member name="m_ui8BeamFunction" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8NumTargetInTrackJamField" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8HighDensityTrackJam" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8BeamStatus" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui32JammingTechnique" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_vTrackJamTargets" sequenceMaxLength="100" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::TrackJamTargetIdentifier"/>
+    </struct>
+  </module>
+</module>
+</types>

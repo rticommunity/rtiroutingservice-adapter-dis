@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/mswick/ndds/rti_connext_dds-6.0.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+<include file="pdu/DIS_DDS_Constants.xml"/>
+<include file="pdu/LE_Header.xml"/>
+<module name="DIS">
+  <module name="PDU">
+    <const name="LE_FIRE_TOPIC_NAME" type="string" value="&quot;LE_FIRE&quot;"/>
+    <const name="LE_FIRE_QOS_PROFILE_NAME" type="string" value="(DIS::DDS_Constants::BEST_EFFORT_QOS)"/>
+    <struct name= "LE_Fire_PDU">
+      <member name="m_Header" type="nonBasic"  nonBasicTypeName= "DIS::PDU::LE_Header"/>
+      <member name="m_ui8Flag" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_TargetID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::LE_EntityIdentifier"/>
+      <member name="m_MunitionID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::LE_EntityIdentifier"/>
+      <member name="m_EventID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::LE_EntityIdentifier"/>
+      <member name="m_MunitionDesc" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::BurstDescriptor"/>
+      <member name="m_Loc" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::RelativeWorldCoordinates"/>
+      <member name="m_Vel" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::LE_Vector16_3"/>
+      <member name="m_ui16Range" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+    </struct>
+  </module>
+</module>
+</types>

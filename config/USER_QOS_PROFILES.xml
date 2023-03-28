@@ -1,0 +1,628 @@
+<?xml version="1.0"?>
+<!-- (c) 2022 Copyright, Real-Time Innovations, Inc. (RTI) All rights reserved.
+
+RTI grants Licensee a license to use, modify, compile, and create derivative
+works of the Software solely in combination with RTI Connext DDS. Licensee
+may redistribute copies of the Software provided that all such copies are
+subject to this License. The Software is provided "as is", with no warranty
+of any type, including any warranty for fitness for any purpose. RTI is
+under no obligation to maintain or support the Software. RTI shall not be
+liable for any incidental or consequential damages arising out of the use or
+inability to use the Software. For purposes of clarity, nothing in this
+License prevents Licensee from using alternate versions of DDS, provided
+that Licensee may not combine or link such alternate versions of DDS with
+the Software. -->
+
+<!--
+DIS Qos Profiles
+
+The environment variable NDDS_QOS_PROFILES should point to this file.
+
+For more information about XML QoS Profiles see Chapter 15 in the RTI
+Data Distribution Service user manual.
+
+If your editor supports it, the schema location below can support
+syntax highlighting, etc., just update xsi:noNamespaceSchemaLocation
+to reflect your $NDDSOME installation directory
+-->
+
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="https://community.rti.com/schema/current/rti_dds_qos_profiles.xsd">
+
+    <qos_library name="DIS_1_0_QoS_Library">
+        <qos_profile name="Factory"
+                     is_default_participant_factory_profile="true">
+            <participant_factory_qos>
+                <logging>
+                    <category>ALL</category>
+                    <verbosity>ERROR</verbosity>
+                </logging>
+                <entity_factory>
+                    <autoenable_created_entities>true</autoenable_created_entities>
+                </entity_factory>
+            </participant_factory_qos>
+        </qos_profile>
+
+
+        <qos_profile name="Base_Participant_QoS">
+            <participant_qos>
+                <!-- these are the default values -->
+                <discovery>
+                    <initial_peers>
+                        <element>builtin.udpv4://239.255.0.1</element>
+                        <!--
+                        <element>builtin.udpv4://localhost</element>
+                        <element>builtin.shmem://</element>
+                        -->
+                    </initial_peers>
+                    <multicast_receive_addresses>
+                        <element>239.255.0.1</element>
+                    </multicast_receive_addresses>
+                </discovery>
+
+                <transport_builtin>
+                    <!-- <mask>UDPv4 | SHMEM</mask> -->
+                    <mask>UDPv4</mask>
+                </transport_builtin>
+
+                <resource_limits>
+                    <!-- Turn off type codes -->
+                    <type_code_max_serialized_length>0</type_code_max_serialized_length>
+                    <!-- Turn on type objects -->
+                    <type_object_max_serialized_length>65535</type_object_max_serialized_length>
+                </resource_limits>
+
+                <property>
+                    <value>
+                        <!-- transport properties - good for windows and linux,
+                            critical for throughput performance.
+                            For linux ensure udp send and receive buffer size
+                            in OS is > these values (rmem_max).
+                        -->
+                        <element>
+                            <name>dds.transport.UDPv4.builtin.recv_socket_buffer_size</name>
+                            <value>2097152</value>
+                        </element>
+                        <element>
+                            <name>dds.transport.UDPv4.builtin.send_socket_buffer_size</name>
+                            <value>524288</value>
+                        </element>
+                        <element>
+                            <name>dds.transport.UDPv4.builtin.multicast_ttl</name>
+                            <value>1</value>
+                        </element>
+
+                        <!--
+                        <element>
+                            <name>rti.monitor.library</name>
+                            <value>rtimonitoring</value>
+                            <propagate>false</propagate>
+                        </element>
+
+                        <element>
+                            <name>rti.monitor.create_function</name>
+                            <value></value>
+                            <propagate>false</propagate>
+                        </element>
+                        -->
+                    </value>
+                </property>
+            </participant_qos>
+        </qos_profile>
+
+
+        <qos_profile name="Best_Effort">
+            <datawriter_qos>
+                <durability>
+                    <kind>VOLATILE_DURABILITY_QOS</kind>
+                </durability>
+
+                <deadline>
+                    <period>
+                        <sec>DURATION_INFINITE_SEC</sec>
+                        <nanosec>DURATION_INFINITE_NSEC</nanosec>
+                    </period>
+                </deadline>
+
+                <liveliness>
+                    <kind>AUTOMATIC_LIVELINESS_QOS</kind>
+                    <lease_duration>
+                        <sec>DURATION_INFINITE_SEC</sec>
+                        <nanosec>DURATION_INFINITE_NSEC</nanosec>
+                    </lease_duration>
+                </liveliness>
+
+                <reliability>
+                    <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+                </reliability>
+
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>1</depth>
+                </history>
+
+                <ownership>
+                    <kind>SHARED_OWNERSHIP_QOS</kind>
+                </ownership>
+
+                <resource_limits>
+                    <max_samples>LENGTH_UNLIMITED</max_samples>
+                    <max_instances>LENGTH_UNLIMITED</max_instances>
+                    <max_samples_per_instance>LENGTH_UNLIMITED</max_samples_per_instance>
+                    <initial_samples>32</initial_samples>
+                    <initial_instances>32</initial_instances>
+                </resource_limits>
+            </datawriter_qos>
+
+            <datareader_qos>
+                <durability>
+                    <kind>VOLATILE_DURABILITY_QOS</kind>
+                </durability>
+
+                <deadline>
+                    <period>
+                        <sec>DURATION_INFINITE_SEC</sec>
+                        <nanosec>DURATION_INFINITE_NSEC</nanosec>
+                    </period>
+                </deadline>
+
+                <liveliness>
+                    <kind>AUTOMATIC_LIVELINESS_QOS</kind>
+                    <lease_duration>
+                        <sec>DURATION_INFINITE_SEC</sec>
+                        <nanosec>DURATION_INFINITE_NSEC</nanosec>
+                    </lease_duration>
+                </liveliness>
+
+                <reliability>
+                    <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+                </reliability>
+
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>1</depth>
+                </history>
+
+                <ownership>
+                    <kind>SHARED_OWNERSHIP_QOS</kind>
+                </ownership>
+
+                <resource_limits>
+                    <max_samples>LENGTH_UNLIMITED</max_samples>
+                    <max_instances>LENGTH_UNLIMITED</max_instances>
+                    <max_samples_per_instance>LENGTH_UNLIMITED</max_samples_per_instance>
+                    <initial_samples>32</initial_samples>
+                    <initial_instances>32</initial_instances>
+                </resource_limits>
+
+            </datareader_qos>
+
+        </qos_profile>
+
+        <qos_profile name="Best_Effort_Deadline" base_name="Best_Effort">
+            <datawriter_qos>
+                <deadline>
+                    <period>
+                        <sec>1</sec>
+                        <nanosec>0</nanosec>
+                    </period>
+                </deadline>
+            </datawriter_qos>
+
+            <datareader_qos>
+                <deadline>
+                    <period>
+                        <sec>4</sec>
+                        <nanosec>0</nanosec>
+                    </period>
+                </deadline>
+            </datareader_qos>
+        </qos_profile>
+
+
+        <qos_profile name="Durable_State">
+            <datawriter_qos>
+                <durability>
+                    <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+                </durability>
+
+                <deadline>
+                    <period>
+                        <sec>DURATION_INFINITE_SEC</sec>
+                        <nanosec>DURATION_INFINITE_NSEC</nanosec>
+                    </period>
+                </deadline>
+
+                <liveliness>
+                    <kind>AUTOMATIC_LIVELINESS_QOS</kind>
+                    <lease_duration>
+                        <sec>1</sec>
+                        <nanosec>0</nanosec>
+                    </lease_duration>
+                </liveliness>
+
+                <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                </reliability>
+
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>1</depth>
+                </history>
+
+                <ownership>
+                    <kind>SHARED_OWNERSHIP_QOS</kind>
+                </ownership>
+
+                <resource_limits>
+                    <max_samples>LENGTH_UNLIMITED</max_samples>
+                    <max_instances>LENGTH_UNLIMITED</max_instances>
+                    <max_samples_per_instance>LENGTH_UNLIMITED</max_samples_per_instance>
+                    <initial_samples>32</initial_samples>
+                    <initial_instances>32</initial_instances>
+                </resource_limits>
+
+                <protocol>
+                    <rtps_reliable_writer>
+                        <low_watermark>0</low_watermark>
+                        <high_watermark>1</high_watermark>
+                        <heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>100000000</nanosec>
+                        </heartbeat_period>
+                        <fast_heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>100000000</nanosec>
+                        </fast_heartbeat_period>
+                        <late_joiner_heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>100000000</nanosec>
+                        </late_joiner_heartbeat_period>
+                        <max_heartbeat_retries>20</max_heartbeat_retries>
+                        <heartbeats_per_max_samples>0</heartbeats_per_max_samples>
+                        <min_nack_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </min_nack_response_delay>
+                        <max_nack_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </max_nack_response_delay>
+                    </rtps_reliable_writer>
+                </protocol>
+            </datawriter_qos>
+
+            <datareader_qos>
+                <durability>
+                    <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+                </durability>
+
+                <deadline>
+                    <period>
+                        <sec>DURATION_INFINITE_SEC</sec>
+                        <nanosec>DURATION_INFINITE_NSEC</nanosec>
+                    </period>
+                </deadline>
+
+                <liveliness>
+                    <kind>AUTOMATIC_LIVELINESS_QOS</kind>
+                    <lease_duration>
+                        <sec>4</sec>
+                        <nanosec>0</nanosec>
+                    </lease_duration>
+                </liveliness>
+
+                <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                </reliability>
+
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>1</depth>
+                </history>
+
+                <ownership>
+                    <kind>SHARED_OWNERSHIP_QOS</kind>
+                </ownership>
+
+                <resource_limits>
+                    <max_samples>LENGTH_UNLIMITED</max_samples>
+                    <max_instances>LENGTH_UNLIMITED</max_instances>
+                    <max_samples_per_instance>LENGTH_UNLIMITED</max_samples_per_instance>
+                    <initial_samples>32</initial_samples>
+                    <initial_instances>32</initial_instances>
+                </resource_limits>
+
+                <protocol>
+                    <rtps_reliable_reader>
+                        <min_heartbeat_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </min_heartbeat_response_delay>
+                        <max_heartbeat_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </max_heartbeat_response_delay>
+                    </rtps_reliable_reader>
+                </protocol>
+
+            </datareader_qos>
+        </qos_profile>
+
+
+        <qos_profile name="Command_Response">
+            <datawriter_qos>
+                <durability>
+                    <kind>VOLATILE_DURABILITY_QOS</kind>
+                </durability>
+
+                <deadline>
+                    <period>
+                        <sec>DURATION_INFINITE_SEC</sec>
+                        <nanosec>DURATION_INFINITE_NSEC</nanosec>
+                    </period>
+                </deadline>
+
+                <liveliness>
+                    <kind>AUTOMATIC_LIVELINESS_QOS</kind>
+                    <lease_duration>
+                        <sec>1</sec>
+                        <nanosec>0</nanosec>
+                    </lease_duration>
+                </liveliness>
+
+                <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                </reliability>
+
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>1</depth>
+                </history>
+
+                <ownership>
+                    <kind>SHARED_OWNERSHIP_QOS</kind>
+                </ownership>
+
+                <resource_limits>
+                    <max_samples>LENGTH_UNLIMITED</max_samples>
+                    <max_instances>LENGTH_UNLIMITED</max_instances>
+                    <max_samples_per_instance>LENGTH_UNLIMITED</max_samples_per_instance>
+                    <initial_samples>32</initial_samples>
+                    <initial_instances>32</initial_instances>
+                </resource_limits>
+
+                <protocol>
+                    <rtps_reliable_writer>
+                        <low_watermark>0</low_watermark>
+                        <high_watermark>1</high_watermark>
+                        <heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>100000000</nanosec>
+                        </heartbeat_period>
+                        <fast_heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>100000000</nanosec>
+                        </fast_heartbeat_period>
+                        <late_joiner_heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>100000000</nanosec>
+                        </late_joiner_heartbeat_period>
+                        <max_heartbeat_retries>20</max_heartbeat_retries>
+                        <heartbeats_per_max_samples>0</heartbeats_per_max_samples>
+                        <min_nack_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </min_nack_response_delay>
+                        <max_nack_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </max_nack_response_delay>
+                    </rtps_reliable_writer>
+                </protocol>
+            </datawriter_qos>
+
+            <datareader_qos>
+                <durability>
+                    <kind>VOLATILE_DURABILITY_QOS</kind>
+                </durability>
+
+                <deadline>
+                    <period>
+                        <sec>DURATION_INFINITE_SEC</sec>
+                        <nanosec>DURATION_INFINITE_NSEC</nanosec>
+                    </period>
+                </deadline>
+
+                <liveliness>
+                    <kind>AUTOMATIC_LIVELINESS_QOS</kind>
+                    <lease_duration>
+                        <sec>4</sec>
+                        <nanosec>0</nanosec>
+                    </lease_duration>
+                </liveliness>
+
+                <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                </reliability>
+
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>1</depth>
+                </history>
+
+                <ownership>
+                    <kind>SHARED_OWNERSHIP_QOS</kind>
+                </ownership>
+
+                <resource_limits>
+                    <max_samples>LENGTH_UNLIMITED</max_samples>
+                    <max_instances>LENGTH_UNLIMITED</max_instances>
+                    <max_samples_per_instance>LENGTH_UNLIMITED</max_samples_per_instance>
+                    <initial_samples>32</initial_samples>
+                    <initial_instances>32</initial_instances>
+                </resource_limits>
+
+                <protocol>
+                    <rtps_reliable_reader>
+                        <min_heartbeat_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </min_heartbeat_response_delay>
+                        <max_heartbeat_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </max_heartbeat_response_delay>
+                    </rtps_reliable_reader>
+                </protocol>
+
+            </datareader_qos>
+        </qos_profile>
+
+
+        <qos_profile name="Periodic_Reliable">
+            <datawriter_qos>
+
+                <durability>
+                    <kind>VOLATILE_DURABILITY_QOS</kind>
+                </durability>
+
+                <deadline>
+                    <period>
+                        <sec>DURATION_INFINITE_SEC</sec>
+                        <nanosec>DURATION_INFINITE_NSEC</nanosec>
+                    </period>
+                </deadline>
+
+                <liveliness>
+                    <kind>AUTOMATIC_LIVELINESS_QOS</kind>
+                    <lease_duration>
+                        <sec>1</sec>
+                        <nanosec>0</nanosec>
+                    </lease_duration>
+                </liveliness>
+
+                <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                </reliability>
+
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>10</depth>
+                </history>
+
+                <ownership>
+                    <kind>SHARED_OWNERSHIP_QOS</kind>
+                </ownership>
+
+                <resource_limits>
+                    <max_samples>LENGTH_UNLIMITED</max_samples>
+                    <max_instances>LENGTH_UNLIMITED</max_instances>
+                    <max_samples_per_instance>LENGTH_UNLIMITED</max_samples_per_instance>
+                    <initial_samples>32</initial_samples>
+                    <initial_instances>32</initial_instances>
+                </resource_limits>
+
+                <protocol>
+                    <rtps_reliable_writer>
+                        <low_watermark>0</low_watermark>
+                        <high_watermark>1</high_watermark>
+                        <heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>10000000</nanosec>
+                        </heartbeat_period>
+                        <fast_heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>10000000</nanosec>
+                        </fast_heartbeat_period>
+                        <late_joiner_heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>10000000</nanosec>
+                        </late_joiner_heartbeat_period>
+                        <max_heartbeat_retries>20</max_heartbeat_retries>
+                        <heartbeats_per_max_samples>0</heartbeats_per_max_samples>
+                        <min_nack_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </min_nack_response_delay>
+                        <max_nack_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </max_nack_response_delay>
+                    </rtps_reliable_writer>
+                </protocol>
+            </datawriter_qos>
+
+            <datareader_qos>
+                <durability>
+                    <kind>VOLATILE_DURABILITY_QOS</kind>
+                </durability>
+
+                <deadline>
+                    <period>
+                        <sec>DURATION_INFINITE_SEC</sec>
+                        <nanosec>DURATION_INFINITE_NSEC</nanosec>
+                    </period>
+                </deadline>
+
+                <liveliness>
+                    <kind>AUTOMATIC_LIVELINESS_QOS</kind>
+                    <lease_duration>
+                        <sec>4</sec>
+                        <nanosec>0</nanosec>
+                    </lease_duration>
+                </liveliness>
+
+                <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                </reliability>
+
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>1</depth>
+                </history>
+
+                <ownership>
+                    <kind>SHARED_OWNERSHIP_QOS</kind>
+                </ownership>
+
+                <resource_limits>
+                    <max_samples>LENGTH_UNLIMITED</max_samples>
+                    <max_instances>LENGTH_UNLIMITED</max_instances>
+                    <max_samples_per_instance>LENGTH_UNLIMITED</max_samples_per_instance>
+                    <initial_samples>32</initial_samples>
+                    <initial_instances>32</initial_instances>
+                </resource_limits>
+
+                <protocol>
+                    <rtps_reliable_reader>
+                        <min_heartbeat_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </min_heartbeat_response_delay>
+                        <max_heartbeat_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </max_heartbeat_response_delay>
+                    </rtps_reliable_reader>
+                </protocol>
+            </datareader_qos>
+        </qos_profile>
+
+
+        <qos_profile name="Durable_Periodic_Reliable" base_name="Periodic_Reliable">
+            <datawriter_qos>
+                <durability>
+                    <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+                </durability>
+
+            </datawriter_qos>
+
+            <datareader_qos>
+                <durability>
+                    <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+                </durability>
+            </datareader_qos>
+        </qos_profile>
+    </qos_library>
+</dds>

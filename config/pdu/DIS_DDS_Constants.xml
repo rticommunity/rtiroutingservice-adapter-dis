@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/mswick/ndds/rti_connext_dds-6.0.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+<module name="DIS">
+  <module name="DDS_Constants">
+    <const name="QOS_LIBRARY" type="string" value="&quot;DIS_1_0_QoS_Library&quot;"/>
+    <const name="BASE_PARTICIPANT_QOS" type="string" value="&quot;Base_Participant_QoS&quot;"/>
+    <const name="BEST_EFFORT_QOS" type="string" value="&quot;Best_Effort&quot;"/>
+    <const name="BEST_EFFORT_DEADLINE_QOS" type="string" value="&quot;Best_Effort_Deadline&quot;"/>
+    <const name="BURSTY_RELIABLE_QOS" type="string" value="&quot;Bursty_Reliable&quot;"/>
+    <const name="COMMAND_RESPONSE_QOS" type="string" value="&quot;Command_Response&quot;"/>
+    <const name="DURABLE_STATE_QOS" type="string" value="&quot;Durable_State&quot;"/>
+    <const name="DURABLE_PERIODIC_RELIABLE_QOS" type="string" value="&quot;Durable_Periodic_Reliable&quot;"/>
+    <const name="PERIODIC_RELIABLE_QOS" type="string" value="&quot;Periodic_Reliable&quot;"/>
+    <const name="PARTICIPANT_LIBRARY_NAME" type="string" value="&quot;DIS_Participant_Library&quot;"/>
+    <const name="PROVIDER_PARTICIPANT_NAME" type="string" value="&quot;DIS_Provider_Participant&quot;"/>
+    <const name="OBSERVER_PARTICIPANT_NAME" type="string" value="&quot;DIS_Observer_Participant&quot;"/>
+    <const name="PUBLISHER_NAME" type="string" value="&quot;DIS_Publisher&quot;"/>
+    <const name="SUBSCRIBER_NAME" type="string" value="&quot;DIS_Subscriber&quot;"/>
+    <const name="ENTITY_STATE_DATAREADER_NAME" type="string" value="&quot;DIS_Entity_State_Reader&quot;"/>
+    <const name="ENTITY_STATE_DATAWRITER_NAME" type="string" value="&quot;DIS_Entity_State_Writer&quot;"/>
+    <const name="DETONATION_DATAREADER_NAME" type="string" value="&quot;DIS_Detonation_Reader&quot;"/>
+    <const name="DETONATION_DATAWRITER_NAME" type="string" value="&quot;DIS_Detonation_Writer&quot;"/>
+  </module>
+</module>
+</types>

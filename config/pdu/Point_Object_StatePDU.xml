@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/mswick/ndds/rti_connext_dds-6.0.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+<include file="pdu/DIS_DDS_Constants.xml"/>
+<include file="pdu/Object_State_Header.xml"/>
+<module name="DIS">
+  <module name="PDU">
+    <const name="POINT_OBJECT_STATE_TOPIC_NAME" type="string" value="&quot;POINT_OBJECT_STATE&quot;"/>
+    <const name="POINT_OBJECT_STATE_QOS_PROFILE_NAME" type="string" value="(DIS::DDS_Constants::BEST_EFFORT_QOS)"/>
+    <struct name= "Point_Object_State_PDU">
+      <member name="m_OsHeader" type="nonBasic"  nonBasicTypeName= "DIS::PDU::Object_State_Header"/>
+      <member name="m_ui8Modifications" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ObjTyp" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::ObjectType"/>
+      <member name="m_Loc" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::WorldCoordinates"/>
+      <member name="m_Ori" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EulerAngles"/>
+      <member name="m_Apperance" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_ui16Padding" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ReqID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::SimulationIdentifier"/>
+      <member name="m_RecvID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::SimulationIdentifier"/>
+      <member name="m_ui32Padding1" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+    </struct>
+  </module>
+</module>
+</types>

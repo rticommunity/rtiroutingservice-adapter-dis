@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/mswick/ndds/rti_connext_dds-6.0.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+<include file="pdu/DIS_DDS_Constants.xml"/>
+<include file="pdu/Common_Header.xml"/>
+<module name="DIS">
+  <module name="PDU">
+    <const name="COLLISION_TOPIC_NAME" type="string" value="&quot;COLLISION&quot;"/>
+    <const name="COLLISION_QOS_PROFILE_NAME" type="string" value="(DIS::DDS_Constants::BEST_EFFORT_QOS)"/>
+    <struct name= "Collision_PDU">
+      <member name="m_Header" type="nonBasic"  nonBasicTypeName= "DIS::PDU::Header"/>
+      <member name="m_IssuingEntityID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EntityIdentifier"/>
+      <member name="m_CollidingEntityID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EntityIdentifier"/>
+      <member name="m_EventID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EntityIdentifier"/>
+      <member name="m_ui8CollisionType" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8Padding" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_Velocity" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::Vector"/>
+      <member name="m_f32Mass" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_Location" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::Vector"/>
+    </struct>
+  </module>
+</module>
+</types>

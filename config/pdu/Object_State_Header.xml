@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/mswick/ndds/rti_connext_dds-6.0.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+<include file="pdu/IO_Header.xml"/>
+<module name="DIS">
+  <module name="PDU">
+    <struct name= "Object_State_Header" nested="true">
+      <member name="m_Header" type="nonBasic"  nonBasicTypeName= "DIS::PDU::Header"/>
+      <member name="m_ObjID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EntityIdentifier"/>
+      <member name="m_RefObjID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EntityIdentifier"/>
+      <member name="m_ui16UpdateNum" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui8ForceID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+    </struct>
+  </module>
+</module>
+</types>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/mswick/ndds/rti_connext_dds-6.0.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+<include file="pdu/EmitterBeam.xml"/>
+<module name="DIS">
+  <module name="DATA_TYPE">
+    <struct name= "EmissionSystem" nested="true">
+      <member name="m_ui8SystemDataLength" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8NumberOfBeams" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui16Padding" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_EmitterSystemRecord" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EmitterSystem"/>
+      <member name="m_Location" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::Vector"/>
+      <member name="m_vEmitterBeams" sequenceMaxLength="100" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EmitterBeam"/>
+    </struct>
+  </module>
+</module>
+</types>

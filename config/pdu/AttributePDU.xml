@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/mswick/ndds/rti_connext_dds-6.0.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+<include file="pdu/DIS_DDS_Constants.xml"/>
+<include file="pdu/Common_Header.xml"/>
+<module name="DIS">
+  <module name="PDU">
+    <const name="ATTRIBUTE_TOPIC_NAME" type="string" value="&quot;DIS_PDU_ATTRIBUTE&quot;"/>
+    <const name="ATTRIBUTE_QOS_PROFILE_NAME" type="string" value="(DIS::DDS_Constants::BEST_EFFORT_DEADLINE_QOS)"/>
+    <struct name= "ATTRIBUTE_PDU">
+      <member name="m_Header" type="nonBasic"  nonBasicTypeName= "DIS::PDU::Header"/>
+      <member name="m_OriginSimAddr" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::SimulationIdentifier"/>
+      <member name="m_ui32Padding1" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_ui16Padding2" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui8AttributeRecordType" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8AttributeProtocolVersion" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8MasterRecordType" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_ui8Padding3" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8NumAttributeRecordSets" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_AttributeRecordSet" sequenceMaxLength="100" type="nonBasic" nonBasicTypeName= "DIS::DATA_TYPE::AttributeRecordSet"/>
+    </struct>
+  </module>
+</module>
+</types>

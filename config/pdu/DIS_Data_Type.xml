@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/mswick/ndds/rti_connext_dds-6.0.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+<module name="DIS">
+  <module name="DATA_TYPE">
+    <typedef name="UINT8" type="byte"/>
+    <typedef name="INT8" type="byte"/>
+    <typedef name="UINT16" type="uint16"/>
+    <typedef name="INT16" type="int16"/>
+    <typedef name="UINT32" type="uint32"/>
+    <typedef name="INT32" type="int32"/>
+    <typedef name="UINT64" type="uint64"/>
+    <typedef name="INT64" type="int64"/>
+    <typedef name="OCTET" type="byte"/>
+    <typedef name="CHAR8" type="byte"/>
+    <typedef name="FLOAT32" type="float32"/>
+    <typedef name="FLOAT64" type="float64"/>
+    <typedef name="FIXED16_3" type="uint16"/>
+    <typedef name="FIXED16_8" type="uint16"/>
+    <typedef name="FIXED8_3" type="byte"/>
+    <typedef name="STRING" stringMaxLength="255" type="string"/>
+    <typedef name="TimeStamp" type="int32"/>
+    <const name="MAX_PDU_SIZE" type="int32" value="8192"/>
+    <enum name="PDUType">
+      <enumerator name="Other_PDU_Type" value="0"/>
+      <enumerator name="Entity_State_PDU_Type" value="1"/>
+      <enumerator name="Fire_PDU_Type" value="2"/>
+      <enumerator name="Detonation_PDU_Type" value="3"/>
+      <enumerator name="Collision_PDU_Type" value="4"/>
+      <enumerator name="Service_Request_PDU_Type" value="5"/>
+      <enumerator name="Resupply_Offer_PDU_Type" value="6"/>
+      <enumerator name="Resupply_Received_PDU_Type" value="7"/>
+      <enumerator name="Resupply_Cancel_PDU_Type" value="8"/>
+      <enumerator name="Repair_Complete_PDU_Type" value="9"/>
+      <enumerator name="Repair_Response_PDU_Type" value="10"/>
+      <enumerator name="Create_Entity_PDU_Type" value="11"/>
+      <enumerator name="Remove_Entity_PDU_Type" value="12"/>
+      <enumerator name="Start_Resume_PDU_Type" value="13"/>
+      <enumerator name="Stop_Freeze_PDU_Type" value="14"/>
+      <enumerator name="Acknowledge_PDU_Type" value="15"/>
+      <enumerator name="Action_Request_PDU_Type" value="16"/>
+      <enumerator name="Action_Response_PDU_Type" value="17"/>
+      <enumerator name="Data_Query_PDU_Type" value="18"/>
+      <enumerator name="Set_Data_PDU_Type" value="19"/>
+      <enumerator name="Data_PDU_Type" value="20"/>
+      <enumerator name="Event_Report_PDU_Type" value="21"/>
+      <enumerator name="Message_PDU_Type" value="22"/>
+      <enumerator name="Electromagnetic_Emission_PDU_Type" value="23"/>
+      <enumerator name="Designator_PDU_Type" value="24"/>
+      <enumerator name="Transmitter_PDU_Type" value="25"/>
+      <enumerator name="Signal_PDU_Type" value="26"/>
+      <enumerator name="Receiver_PDU_Type" value="27"/>
+      <enumerator name="IFF_ATC_NAVAIDS_PDU_Type" value="28"/>
+      <enumerator name="UnderwaterAcoustic_PDU_Type" value="29"/>
+      <enumerator name="SupplementalEmission_EntityState_PDU_Type" value="30"/>
+      <enumerator name="IntercomSignal_PDU_Type" value="31"/>
+      <enumerator name="IntercomControl_PDU_Type" value="32"/>
+      <enumerator name="AggregateState_PDU_Type" value="33"/>
+      <enumerator name="IsGroupOf_PDU_Type" value="34"/>
+      <enumerator name="TransferControl_PDU_Type" value="35"/>
+      <enumerator name="IsPartOf_PDU_Type" value="36"/>
+      <enumerator name="MinefieldState_PDU_Type" value="37"/>
+      <enumerator name="MinefieldQuery_PDU_Type" value="38"/>
+      <enumerator name="MinefieldData_PDU_Type" value="39"/>
+      <enumerator name="MinefieldResponseNAK_PDU_Type" value="40"/>
+      <enumerator name="EnvironmentalProcess_PDU_Type" value="41"/>
+      <enumerator name="GriddedData_PDU_Type" value="42"/>
+      <enumerator name="PointObjectState_PDU_Type" value="43"/>
+      <enumerator name="LinearObjectState_PDU_Type" value="44"/>
+      <enumerator name="ArealObjectState_PDU_Type" value="45"/>
+      <enumerator name="TSPI_PDU_Type" value="46"/>
+      <enumerator name="Appearance_PDU_Type" value="47"/>
+      <enumerator name="ArticulatedParts_PDU_Type" value="48"/>
+      <enumerator name="LEFire_PDU_Type" value="49"/>
+      <enumerator name="LEDetonation_PDU_Type" value="50"/>
+      <enumerator name="CreateEntity_R_PDU_Type" value="51"/>
+      <enumerator name="RemoveEntity_R_PDU_Type" value="52"/>
+      <enumerator name="Start_Resume_R_PDU_Type" value="53"/>
+      <enumerator name="Stop_Freeze_R_PDU_Type" value="54"/>
+      <enumerator name="Acknowledge_R_PDU_Type" value="55"/>
+      <enumerator name="ActionRequest_R_PDU_Type" value="56"/>
+      <enumerator name="ActionResponse_R_PDU_Type" value="57"/>
+      <enumerator name="DataQuery_R_PDU_Type" value="58"/>
+      <enumerator name="SetData_R_PDU_Type" value="59"/>
+      <enumerator name="Data_R_PDU_Type" value="60"/>
+      <enumerator name="EventReport_R_PDU_Type" value="61"/>
+      <enumerator name="Comment_R_PDU_Type" value="62"/>
+      <enumerator name="Record_R_PDU_Type" value="63"/>
+      <enumerator name="SetRecord_R_PDU_Type" value="64"/>
+      <enumerator name="RecordQuery_R_PDU_Type" value="65"/>
+      <enumerator name="Collision_Elastic_PDU_Type" value="66"/>
+      <enumerator name="EntityStateUpdate_PDU_Type" value="67"/>
+      <enumerator name="DirectedEnergyFire_PDU_Type" value="68"/>
+      <enumerator name="EntityDamageStatus_PDU_Type" value="69"/>
+      <enumerator name="IO_Action_PDU_Type" value="70"/>
+      <enumerator name="IO_Report_PDU_Type" value="71"/>
+      <enumerator name="Attribute_PDU_Type" value="72"/>
+      <enumerator name="Announce_Object_PDU_Type" value="129"/>
+      <enumerator name="Delete_Object_PDU_Type" value="130"/>
+      <enumerator name="Describe_Event_PDU_Type" value="132"/>
+      <enumerator name="Describe_Object_PDU_Type" value="133"/>
+      <enumerator name="Request_Event_PDU_Type" value="134"/>
+      <enumerator name="Request_Object_PDU_Type" value="135"/>
+    </enum> 
+    <enum name="ForceID">
+      <enumerator name="OtherForceID" value="0"/>
+      <enumerator name="Friendly" value="1"/>
+      <enumerator name="Opposing" value="2"/>
+      <enumerator name="Neutral" value="3"/>
+      <enumerator name="Friendly2" value="4"/>
+      <enumerator name="Opposing2" value="5"/>
+      <enumerator name="Neutral2" value="6"/>
+      <enumerator name="Friendly3" value="7"/>
+      <enumerator name="Opposing3" value="8"/>
+      <enumerator name="Neutral3" value="9"/>
+      <enumerator name="Friendly4" value="10"/>
+      <enumerator name="Opposing4" value="11"/>
+      <enumerator name="Neutral4" value="12"/>
+      <enumerator name="Friendly5" value="13"/>
+      <enumerator name="Opposing5" value="14"/>
+      <enumerator name="Neutral5" value="15"/>
+      <enumerator name="Friendly6" value="16"/>
+      <enumerator name="Opposing6" value="17"/>
+      <enumerator name="Neutral6" value="18"/>
+      <enumerator name="Friendly7" value="19"/>
+      <enumerator name="Opposing7" value="20"/>
+      <enumerator name="Neutral7" value="21"/>
+      <enumerator name="Friendly8" value="22"/>
+      <enumerator name="Opposing8" value="23"/>
+      <enumerator name="Neutral8" value="24"/>
+      <enumerator name="Friendly9" value="25"/>
+      <enumerator name="Opposing9" value="26"/>
+      <enumerator name="Neutral9" value="27"/>
+      <enumerator name="Friendly10" value="28"/>
+      <enumerator name="Opposing10" value="29"/>
+      <enumerator name="Neutral10" value="30"/>
+    </enum> 
+    <enum name="AggregateState">
+      <enumerator name="OtherAggregateState" value="0"/>
+      <enumerator name="Aggregated" value="1"/>
+      <enumerator name="Disaggregated" value="2"/>
+      <enumerator name="FullyDisaggregated" value="3"/>
+      <enumerator name="PseudoDisaggregated" value="4"/>
+      <enumerator name="PartiallyDisaggregated" value="5"/>
+    </enum> 
+    <enum name="Formation">
+      <enumerator name="OtherFormation" value="0"/>
+      <enumerator name="Assembly" value="1"/>
+      <enumerator name="Vee" value="2"/>
+      <enumerator name="Wedge" value="3"/>
+      <enumerator name="Line" value="4"/>
+      <enumerator name="Column" value="5"/>
+    </enum> 
+    <enum name="WarfareType">
+      <enumerator name="NoWarfareTypeStatement" value="0"/>
+      <enumerator name="ElectronicWarfare_CW" value="1"/>
+      <enumerator name="ComputerNetworkOperations_CNO" value="2"/>
+      <enumerator name="PsychologicalOperations_PSYOPS" value="3"/>
+      <enumerator name="MilitaryDeception_MILDEC" value="4"/>
+      <enumerator name="OperationsSecurity_OPSEC" value="5"/>
+    </enum> 
+    <enum name="ActionType">
+      <enumerator name="NoActionTypeStatement" value="0"/>
+      <enumerator name="IOAttackProfileData_Parametrics" value="1"/>
+      <enumerator name="IOAttackComputerEffects" value="2"/>
+    </enum> 
+    <enum name="ActionPhase">
+      <enumerator name="NoActionPhaseStatement" value="0"/>
+      <enumerator name="StartAttackProfile" value="1"/>
+      <enumerator name="EndAttackProfile" value="2"/>
+      <enumerator name="ContinueAttackProfileWithChanges" value="3"/>
+      <enumerator name="StartAttackEffects" value="4"/>
+      <enumerator name="EndAttackEffects" value="5"/>
+      <enumerator name="ContinueAttackEffectsWithChanges" value="6"/>
+    </enum> 
+    <enum name="ControlType">
+      <enumerator name="ControlTypeReserved" value="0"/>
+      <enumerator name="ControlTypeStatus" value="1"/>
+      <enumerator name="Request_Acknowledge_Required" value="2"/>
+      <enumerator name="Request_No_Acknowledge" value="3"/>
+      <enumerator name="Ack_Request_Granted" value="4"/>
+      <enumerator name="Nack_Request_Denied" value="5"/>
+    </enum> 
+    <enum name="ChannelType">
+      <enumerator name="ChannelTypeReserved" value="0"/>
+      <enumerator name="Connection_FDX" value="1"/>
+      <enumerator name="Connection_HDX_Destination_Receive_Only" value="2"/>
+      <enumerator name="Connection_HDX_Destination_Transmit_Only" value="3"/>
+      <enumerator name="Connection_HDX" value="4"/>
+    </enum> 
+    <enum name="ChannelClass">
+      <enumerator name="Simulated_Comm_Channel" value="0"/>
+      <enumerator name="Simulation_Support_Comm_Channel" value="1"/>
+    </enum> 
+    <enum name="TransmitLineState">
+      <enumerator name="TransmitLineStateNotApplicable" value="0"/>
+      <enumerator name="NotTransmitting" value="1"/>
+      <enumerator name="Transmitting" value="2"/>
+    </enum> 
+    <enum name="LineStateCommand">
+      <enumerator name="NoLineStateCommand" value="0"/>
+      <enumerator name="SetLineState_Transmitting" value="1"/>
+      <enumerator name="SetLineState_NotTransmitting" value="2"/>
+      <enumerator name="ReturnToLocalLineStateControl" value="3"/>
+    </enum> 
+    <enum name="AdditionalIntrCommParamType">
+      <enumerator name="EntityDestinationRecord_Type" value="1"/>
+      <enumerator name="GroupDestinationRecord_Type" value="2"/>
+      <enumerator name="GroupAssignmentRecord_Type" value="3"/>
+    </enum> 
+    <struct name= "ClockTime" nested="true">
+      <member name="m_i32Hour" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::INT32"/>
+      <member name="m_ui32TimePastHour" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+    </struct>
+    <struct name= "SimulationIdentifier" nested="true">
+      <member name="m_ui16SiteID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16ApplicationID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+    </struct>
+    <struct name= "EntityIdentifier" nested="true">
+      <member name="m_SimulationIdentifier" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::SimulationIdentifier"/>
+      <member name="m_ui16EntityID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+    </struct>
+    <struct name= "AggregateIdentifier" nested="true">
+      <member name="m_SimulationIdentifier" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::SimulationIdentifier"/>
+      <member name="m_ui16AggregateID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+    </struct>
+    <struct name= "EntityType" nested="true">
+      <member name="m_ui8EntityKind" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8Domain" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui16Country" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui8Category" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8SubCategory" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8Specific" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8Extra" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+    </struct>
+    <struct name= "DatumEntry" nested="true">
+      <member name="Buffer" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::OCTET" arrayDimensions="8"/>
+    </struct>
+    <struct name= "FixedDatum" nested="true">
+      <member name="m_ui32DatumID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_cDatumValue" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::OCTET" arrayDimensions="4"/>
+    </struct>
+    <struct name= "VariableDatum" nested="true">
+      <member name="m_ui32DatumID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_ui32DatumLength" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_v8DatumValue" sequenceMaxLength="100" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::DatumEntry"/>
+    </struct>
+    <struct name= "Vector" nested="true">
+      <member name="m_f32X" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32Y" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32Z" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+    </struct>
+    <struct name= "WorldCoordinates" nested="true">
+      <member name="m_f64X" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT64"/>
+      <member name="m_f64Y" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT64"/>
+      <member name="m_f64Z" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT64"/>
+    </struct>
+    <struct name= "RelativeWorldCoordinates" nested="true">
+      <member name="m_ui16RefPnt" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_DelX" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FIXED16_3"/>
+      <member name="m_DelY" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FIXED16_3"/>
+      <member name="m_DelZ" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FIXED16_3"/>
+    </struct>
+    <struct name= "EulerAngles" nested="true">
+      <member name="m_f32Psi" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32Theta" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32Phi" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+    </struct>
+    <struct name= "LE_EulerAngles" nested="true">
+      <member name="m_Psi" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FIXED8_3"/>
+      <member name="m_Theta" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FIXED8_3"/>
+      <member name="m_Phi" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FIXED8_3"/>
+    </struct>
+    <struct name= "AggregateMarking" nested="true">
+      <member name="m_ui8AggregateMarkingCharacterSet" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_sAggregateMarkingString" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::CHAR8" arrayDimensions="31"/>
+    </struct>
+    <struct name= "AggregateType" nested="true">
+      <member name="m_ui8Kind" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8Domain" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui16Country" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui8Category" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8SubCategory" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8Specific" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8Extra" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+    </struct>
+    <struct name= "ArealObjectAppearance" nested="true">
+      <member name="m_ui32SpecificAppearance" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+    </struct>
+    <struct name= "ArticulationParameters" nested="true">
+      <member name="m_ui8ArticulationType" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8ParmeterChange" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui16AttachementID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui32ParamTypeVariant" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_ui64ParamValue" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT64"/>
+    </struct>
+    <typedef name="EntityAppearance" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+    <struct name= "BurstDescriptor" nested="true">
+      <member name="m_Munition" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EntityType"/>
+      <member name="m_ui16Warhead" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16Fuse" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16Quantity" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16Rate" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+    </struct>
+    <struct name= "DeadReckoningParameter" nested="true">
+      <member name="m_ui8DeadRecknoningAlgorithm" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_OtherParams" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::OCTET" arrayDimensions="15"/>
+      <member name="m_LinearAcceleration" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::Vector"/>
+      <member name="m_AngularVelocity" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::Vector"/>
+    </struct>
+    <struct name= "EntityMarking" nested="true">
+      <member name="m_ui8EntityMarkingCharacterSet" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_sEntityMarkingString" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::CHAR8" arrayDimensions="11"/>
+    </struct>
+    <struct name= "EntityCapabilities" nested="true">
+      <member name="m_AmmoFuelRecoveryRepair" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_Unused1" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_Unused2" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_Unused3" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+    </struct>
+    <struct name= "EnvironmentType" nested="true">
+      <member name="m_ui8EntityKind" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8Domain" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui16Class" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui8Category" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8SubCategory" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8Specific" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8Extra" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+    </struct>
+    <struct name= "EnvironmentRecord" nested="true">
+      <member name="m_ui32EnvRecTyp" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_ui16Length" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui8Index" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8Padding" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_Location" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::WorldCoordinates"/>
+    </struct>
+    <struct name= "FundamentalParameterData" nested="true">
+      <member name="m_f32Freq" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32FreqRange" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32EffectiveRadiatedPower" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32PulseRepetitionFreq" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32PulseWidth" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32BeamAzimuthCenter" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32BeamAzimuthSweep" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32BeamElevationCenter" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32BeamElevationSweep" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32BeamSweepSync" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+    </struct>
+    <struct name= "GridAxisRegular" nested="true">
+      <member name="m_f64DomainInitialXi" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT64"/>
+      <member name="m_f64DomainFinalXi" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT64"/>
+      <member name="m_ui16DomainPointsXi" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui8InterleafFactor" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8AxisType" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui16NumPoints" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16InitialIndex" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+    </struct>
+    <struct name= "GridData" nested="true">
+      <member name="m_ui16SmpTyp" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16DtRep" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+    </struct>
+    <struct name= "LE_Vector8_3" nested="true">
+      <member name="m_X" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FIXED8_3"/>
+      <member name="m_Y" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FIXED8_3"/>
+      <member name="m_Z" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FIXED8_3"/>
+    </struct>
+    <struct name= "LE_Vector16_3" nested="true">
+      <member name="m_X" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FIXED16_3"/>
+      <member name="m_Y" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FIXED16_3"/>
+      <member name="m_Z" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FIXED16_3"/>
+    </struct>
+    <struct name= "LE_DeadReckoningParameter" nested="true">
+      <member name="m_ui8DeadRecknoningAlgorithm" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_LinearAcceleration" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::LE_Vector8_3"/>
+      <member name="m_AngularVelocity" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::LE_Vector8_3"/>
+    </struct>
+    <struct name= "LinearSegmentParameter" nested="true">
+      <member name="m_ui8SegNum" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8Modifications" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ObjApr" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_Loc" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::WorldCoordinates"/>
+      <member name="m_Ori" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EulerAngles"/>
+      <member name="m_ui16Length" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16Width" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16Height" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16Depth" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui32Padding" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+    </struct>
+    <struct name= "OrientationError" nested="true">
+      <member name="m_AziErr" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FIXED16_8"/>
+      <member name="m_ElvErr" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FIXED16_8"/>
+      <member name="m_RotErr" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FIXED16_8"/>
+    </struct>
+    <struct name= "PositionError" nested="true">
+      <member name="m_HorzErr" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FIXED16_8"/>
+      <member name="m_VertErr" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FIXED16_8"/>
+    </struct>
+    <struct name= "RelationshipRecord" nested="true">
+      <member name="m_ui16Nature" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16Pos" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+    </struct>
+    <struct name= "SilentAggregateSystem" nested="true">
+      <member name="m_ui16NumSilentAggregates" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16Pad" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_AggTyp" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::AggregateType"/>
+    </struct>
+    <struct name= "SilentEntitySystem" nested="true">
+      <member name="m_ui16NumEnts" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16NumOfAppearanceRecords" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_EntTyp" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EntityType"/>
+      <member name="m_vEA" sequenceMaxLength="100" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EntityAppearance"/>
+    </struct>
+    <struct name= "StandardVariable" nested="true">
+      <member name="m_ui32Type" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_ui16Length" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+    </struct>
+    <struct name= "NamedLocationIdentifier" nested="true">
+      <member name="m_ui16StnName" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16StnNum" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+    </struct>
+    <struct name= "ObjectType" nested="true">
+      <member name="m_ui8Domain" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8EntityKind" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8Category" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8SubCategory" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+    </struct>
+    <struct name= "AntennaLocation" nested="true">
+      <member name="m_AntennaLocation" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::WorldCoordinates"/>
+      <member name="m_RelativeAntennaLocation" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::Vector"/>
+    </struct>
+    <struct name= "RadioEntityType" nested="true">
+      <member name="m_ui8EntityKind" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8Domain" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui16Country" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui8Category" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8NomenclatureVersion" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui16Nomenclature" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+    </struct>
+    <struct name= "ModulationType" nested="true">
+      <member name="m_ui16SpreadSpectrum" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16MajorModulationType" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16Detail" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16System" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+    </struct>
+    <struct name= "CommunicationsChannelType" nested="true">
+      <member name="m_ui8CommChannelType" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+    </struct>
+    <struct name= "IntercomCommunicationParameters" nested="true">
+      <member name="m_ui16Type" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16Length" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_IntercomData" sequenceMaxLength="100" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+    </struct>
+    <struct name= "CryptoSystem" nested="true">
+      <member name="m_ui16CryptoSystemType" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16CryptoKey" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+    </struct>
+    <struct name= "EncodingScheme" nested="true">
+      <member name="m_ui16EncodingScheme" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16TDLType" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+    </struct>
+    <struct name= "RecordSet" nested="true">
+      <member name="m_ui32RecID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_ui32RecSetSerialNum" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_ui16RecLen" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16RecCnt" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_vui8RecVals" sequenceMaxLength="100" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+    </struct>
+    <struct name= "Reliability_Header" nested="true">
+      <member name="m_ui8ReqRelSrv" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui16Padding1" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui8Padding" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+    </struct>
+    <struct name= "LE_EntityIdentifier" nested="true">
+      <member name="m_ui8SiteID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8ApplicationID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui16EntityID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+    </struct>
+    <struct name= "TrackJamTargetIdentifier" nested="true">
+      <member name="m_ui16SiteID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16ApplicationID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16EntityID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui8EmitterID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8BeamID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+    </struct>
+    <struct name= "EmitterSystem" nested="true">
+      <member name="m_ui16EmitterName" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui8Function" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8EmitterIDNumber" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+    </struct>
+    <struct name = "StandardRecord" nested="true">
+      <member name="m_u32RecordType" type="nonBasic" nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_u16RecordLength" type="nonBasic" nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_RecordFields" sequenceMaxLength="100" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::OCTET"/>
+      <member name="m_Padding" sequenceMaxLength="8" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::OCTET"/>
+    </struct>
+    <struct name = "AttributeRecordSet" nested = "true">
+      <member name="m_EntityID" type="nonBasic" nonBasicTypeName= "DIS::DATA_TYPE::EntityIdentifier"/>
+      <member name="m_u16NumRecords" type="nonBasic" nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_StandardRecord" sequenceMaxLength="100" type="nonBasic" nonBasicTypeName="DIS::DATA_TYPE::StandardRecord"/>
+    </struct>
+
+    <struct name= "Coordinates" nested="true">
+      <member name="m_f32X" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32Y" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+    </struct>
+  </module>
+  <module name="PDU">
+    <const name="MAX_ARTICULATION_PARAMETERS" type="int32" value="(((DIS::DATA_TYPE::MAX_PDU_SIZE))-1152)/128"/>
+    <const name="MAX_FIXED_RECS" type="int32" value="(((DIS::DATA_TYPE::MAX_PDU_SIZE))-88)/128"/>
+    <const name="MAX_VRBL_RECS" type="int32" value="(((DIS::DATA_TYPE::MAX_PDU_SIZE))-88)/128"/>
+    <const name="MAX_STD_RECS" type="int32" value="(((DIS::DATA_TYPE::MAX_PDU_SIZE))-88)/128"/>
+  </module>
+</module>
+</types>

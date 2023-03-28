@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/mswick/ndds/rti_connext_dds-6.0.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+<include file="pdu/DIS_DDS_Constants.xml"/>
+<include file="pdu/Common_Header.xml"/>
+<module name="DIS">
+  <module name="PDU">
+    <const name="MAX_DE_RECS" type="int32" value="(((DIS::DATA_TYPE::MAX_PDU_SIZE))-88)/128"/>
+    <const name="DIRECTED_ENERGY_FIRE_TOPIC_NAME" type="string" value="&quot;DIRECTED_ENERGY_FIRE&quot;"/>
+    <const name="DIRECTED_ENERGY_FIRE_QOS_PROFILE_NAME" type="string" value="(DIS::DDS_Constants::BEST_EFFORT_QOS)"/>
+    <struct name= "Directed_Energy_Fire_PDU">
+      <member name="m_Header" type="nonBasic"  nonBasicTypeName= "DIS::PDU::Header"/>
+      <member name="m_FiringEntityID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EntityIdentifier"/>
+      <member name="m_EventID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EntityIdentifier"/>
+      <member name="m_MunTyp" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EntityType"/>
+      <member name="m_ShotStartTime" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::ClockTime"/>
+      <member name="m_f32CumulativeShotTime" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_EmitterLoc" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::Vector"/>
+      <member name="m_f32AperDiameter" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32Wavelength" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32PeakIrradiance" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32PulseRepFreq" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32PulseWidth" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_ui16Flags" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui8PulseShp" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8Padding1" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui32Padding2" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_ui16Padding3" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16NumDERecs" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_vDeRec" sequenceMaxLength="DIS::PDU::MAX_DE_RECS" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::StandardVariable"/>
+    </struct>
+  </module>
+</module>
+</types>

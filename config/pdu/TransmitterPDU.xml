@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/mswick/ndds/rti_connext_dds-6.0.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+<include file="pdu/DIS_DDS_Constants.xml"/>
+<include file="pdu/Radio_Communications_Header.xml"/>
+<module name="DIS">
+  <module name="PDU">
+    <const name="MAX_MODULATION_DATA" type="int32" value="((((DIS::DATA_TYPE::MAX_PDU_SIZE))-208)/2)"/>
+    <const name="MAX_PATTERN_DATA" type="int32" value="((((DIS::DATA_TYPE::MAX_PDU_SIZE))-208)/2)"/>
+    <const name="TRANSMITTER_TOPIC_NAME" type="string" value="&quot;TRANSMITTER&quot;"/>
+    <const name="TRANSMITTER_QOS_PROFILE_NAME" type="string" value="(DIS::DDS_Constants::BEST_EFFORT_QOS)"/>
+    <struct name= "Transmitter_PDU">
+      <member name="m_RC_Header" type="nonBasic"  nonBasicTypeName= "DIS::PDU::Radio_Communications_Header"/>
+      <member name="m_RadioEntityType" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::RadioEntityType"/>
+      <member name="m_ui8TransmitterState" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8InputSource" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui16NumberOfVariableTransmitterParam" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_AntennaLocation" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::AntennaLocation"/>
+      <member name="m_ui16AntennaPatternType" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16AntennaPatternLength" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui64Freq" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT64"/>
+      <member name="m_f32TransmitFreqBW" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_f32Power" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::FLOAT32"/>
+      <member name="m_ModulationType" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::ModulationType"/>
+      <member name="m_CryptoSystem" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::CryptoSystem"/>
+      <member name="m_ui8LengthOfModulationParam" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8Padding2" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui16Padding3" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_vModulationParams" sequenceMaxLength="DIS::PDU::MAX_MODULATION_DATA" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::OCTET"/>
+      <member name="m_vAntennaPattern" sequenceMaxLength="DIS::PDU::MAX_MODULATION_DATA" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::OCTET"/>
+      <member name="m_vVariableTransmitterParamRecord" sequenceMaxLength="100" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::StandardRecord"/>
+    </struct>
+  </module>
+</module>
+</types>

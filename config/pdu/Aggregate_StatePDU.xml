@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/mswick/ndds/rti_connext_dds-6.0.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+<include file="pdu/DIS_DDS_Constants.xml"/>
+<include file="pdu/Common_Header.xml"/>
+<module name="DIS">
+  <module name="PDU">
+    <const name="MAX_VAR_DATUM" type="int32" value="80"/>
+    <const name="MAX_AGGREGATE_ID" type="int32" value="80"/>
+    <const name="MAX_ENTITY_ID" type="int32" value="80"/>
+    <const name="AGGREGATE_STATE_TOPIC_NAME" type="string" value="&quot;AGGREGATE_STATE&quot;"/>
+    <const name="AGGREGATE_STATE_QOS_PROFILE_NAME" type="string" value="(DIS::DDS_Constants::BEST_EFFORT_QOS)"/>
+    <struct name= "Aggregate_State_PDU">
+      <member name="m_Header" type="nonBasic"  nonBasicTypeName= "DIS::PDU::Header"/>
+      <member name="m_AggregateID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::AggregateIdentifier"/>
+      <member name="m_ui8ForceID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8AggState" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_AggregateType" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::AggregateType"/>
+      <member name="m_ui32Formation" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_AggregateMarking" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::AggregateMarking"/>
+      <member name="m_Dimensions" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::Vector"/>
+      <member name="m_Ori" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EulerAngles"/>
+      <member name="m_CtrOfMassLoc" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::WorldCoordinates"/>
+      <member name="m_Vel" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::Vector"/>
+      <member name="m_ui16NumAggregates" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16NumEntities" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16NumSilentAggregateTypes" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16NumSilentEntityTypes" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_vAI" sequenceMaxLength="DIS::PDU::MAX_AGGREGATE_ID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::AggregateIdentifier"/>
+      <member name="m_vEI" sequenceMaxLength="DIS::PDU::MAX_ENTITY_ID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EntityIdentifier"/>
+      <member name="m_ui16AggStatePadding1" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_vSASL" sequenceMaxLength="DIS::PDU::MAX_AGGREGATE_ID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::SilentAggregateSystem"/>
+      <member name="m_vSESL" sequenceMaxLength="DIS::PDU::MAX_ENTITY_ID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::SilentEntitySystem"/>
+      <member name="m_ui32NumVrblDatum" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT32"/>
+      <member name="m_vVD" sequenceMaxLength="DIS::PDU::MAX_VAR_DATUM" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::VariableDatum"/>
+    </struct>
+  </module>
+</module>
+</types>

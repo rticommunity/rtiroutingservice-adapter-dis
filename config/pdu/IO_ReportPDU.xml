@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/mswick/ndds/rti_connext_dds-6.0.1/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_topic_types.xsd">
+<include file="pdu/DIS_DDS_Constants.xml"/>
+<include file="pdu/IO_Header.xml"/>
+<module name="DIS">
+  <module name="PDU">
+    <const name="IO_REPORT_TOPIC_NAME" type="string" value="&quot;IO_REPORT&quot;"/>
+    <const name="IO_REPORT_QOS_PROFILE_NAME" type="string" value="(DIS::DDS_Constants::BEST_EFFORT_QOS)"/>
+    <struct name= "IO_Report_PDU">
+      <member name="m_IoHeader" type="nonBasic"  nonBasicTypeName= "DIS::PDU::IO_Header"/>
+      <member name="m_ui16SimSrc" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui8ReportType" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_ui8Padding1" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT8"/>
+      <member name="m_AtkEntityID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EntityIdentifier"/>
+      <member name="m_TgtEntityID" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::EntityIdentifier"/>
+      <member name="m_ui16Padding2" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16Padding3" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_ui16NumIORec" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::UINT16"/>
+      <member name="m_vIORecords" sequenceMaxLength="DIS::PDU::MAX_STD_RECS" type="nonBasic"  nonBasicTypeName= "DIS::DATA_TYPE::StandardRecord"/>
+    </struct>
+  </module>
+</module>
+</types>
